@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equilibria · Nezávislé literárne vydavateľstvo</title>
+  <meta name="description" content="Equilibria je nezávislé vydavateľstvo zamerané na krásnu literatúru, poéziu a esej. Knihy, ktoré držia rovnováhu medzi slovom a tichom." />
+  <meta property="og:title" content="Equilibria · Nezávislé literárne vydavateľstvo" />
+  <meta property="og:description" content="Knihy, ktoré držia rovnováhu medzi slovom a tichom." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/equilibria-mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson: #AF1D1E;
+      --crimson-deep: #8E1517;
+      --cream: #F4EFE6;
+      --ink: #221E1C;
+      --ink-soft: #52483F;
+      --line: rgba(34,30,28,0.16);
+      --display: 'Playfair Display', Georgia, serif;
+      --body: 'EB Garamond', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(var(--y, 26px));
+      transition:
+        opacity var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s),
+        transform var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal.eager {
+      opacity: 0;
+      transform: translateY(var(--y, 26px));
+      animation: reveal-in var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s) forwards;
+    }
+    @keyframes reveal-in {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 64px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .logo img { width: 40px; height: 40px; }
+    .logo-name {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    nav {
+      display: flex;
+      gap: 36px;
+      font-family: var(--mono);
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--crimson); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 92px 64px 84px;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 30px;
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(100px, 17.2vw, 248px);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--crimson);
+    }
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 48px;
+    }
+    .hero-rule {
+      height: 1px;
+      background: var(--line);
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .hero-tagline {
+      font-family: var(--display);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--ink-soft);
+      max-width: 560px;
+      text-align: right;
+    }
+
+    /* Quote band */
+    .quote-band {
+      position: relative;
+      background: var(--crimson);
+      color: var(--cream);
+      padding: 110px 64px;
+      overflow: hidden;
+    }
+    .quote-figure {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 560px;
+      opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
+    }
+    .quote-inner {
+      position: relative;
+      max-width: 980px;
+    }
+    .quote-mark {
+      font-family: var(--display);
+      font-size: 140px;
+      line-height: 0.5;
+      display: block;
+      height: 70px;
+      opacity: 0.5;
+    }
+    blockquote {
+      font-family: var(--display);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.28;
+      margin: 0 0 36px;
+    }
+    .quote-attribution {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* Reading image */
+    .reading-section {
+      position: relative;
+      height: 760px;
+    }
+    .reading-section img.reading-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .reading-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,18,16,0.6), rgba(20,18,16,0) 42%);
+      pointer-events: none;
+    }
+    .reading-caption {
+      position: absolute;
+      left: 64px;
+      bottom: 56px;
+      pointer-events: none;
+    }
+    .reading-caption-label {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+    .reading-caption-title {
+      font-family: var(--display);
+      font-size: 40px;
+      font-style: italic;
+      color: var(--cream);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 136px 64px;
+      text-align: center;
+    }
+    .cta-figure {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-figure-left {
+      left: -130px;
+      bottom: -130px;
+      width: 520px;
+      opacity: 0.10;
+    }
+    .cta-figure-right {
+      right: -150px;
+      top: -150px;
+      width: 440px;
+      opacity: 0.08;
+      transform: scaleX(-1);
+    }
+    .cta-inner { position: relative; }
+    .cta-eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 30px;
+    }
+    .cta-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(56px, 7vw, 100px);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      margin: 0 auto 28px;
+      max-width: 1040px;
+      color: var(--ink);
+    }
+    .cta-title em {
+      font-style: italic;
+      color: var(--crimson);
+    }
+    .cta-body {
+      font-family: var(--display);
+      font-size: clamp(20px, 2.2vw, 31px);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0 auto 54px;
+      max-width: 700px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--crimson);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 27px 62px;
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+      background: var(--crimson-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(175,29,30,0.28);
+    }
+    .cta-btn:hover .cta-arrow { transform: translateX(7px); }
+    .cta-arrow { font-size: 24px; transition: transform 0.2s; }
+    .cta-sub {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      opacity: 0.7;
+      margin-top: 26px;
+    }
+
+    /* About */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      padding: 116px 64px;
+      border-top: 1px solid var(--line);
+    }
+    .about-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(36px, 3.75vw, 54px);
+      line-height: 1.05;
+      margin: 0 0 40px;
+      color: var(--ink);
+    }
+    dl { margin: 0; }
+    .about-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+    }
+    dt {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+    dd {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+    .about-text {
+      font-size: clamp(18px, 1.74vw, 25px);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .about-text p { margin: 0 0 28px; }
+    .about-text p:last-child { margin: 0; }
+    .about-name { font-family: var(--display); color: var(--ink); }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-logo img { width: 34px; height: 34px; }
+    .footer-logo-name {
+      font-family: var(--display);
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 28px;
+      font-family: var(--mono);
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .footer-nav a:hover { opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      header { padding: 20px 28px; }
+      nav { gap: 20px; font-size: 13px; }
+      .hero { padding: 56px 28px 56px; }
+      .hero-bottom { flex-direction: column; gap: 20px; }
+      .hero-rule { display: none; }
+      .hero-tagline { text-align: left; max-width: 100%; }
+      .quote-band { padding: 72px 28px; }
+      .quote-figure { display: none; }
+      .reading-section { height: 480px; }
+      .reading-caption { left: 28px; bottom: 32px; }
+      .cta-section { padding: 80px 28px; }
+      .about-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
+      footer { flex-direction: column; gap: 28px; text-align: center; padding: 40px 28px; }
+      .footer-nav { flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 540px) {
+      header { padding: 16px 20px; }
+      nav { display: none; }
+      .hero { padding: 44px 20px 44px; }
+      .quote-band { padding: 56px 20px; }
+      .reading-caption { left: 20px; bottom: 24px; }
+      .reading-caption-title { font-size: 28px; }
+      .cta-section { padding: 64px 20px; }
+      .cta-btn { padding: 22px 36px; font-size: 18px; }
+      .about-section { padding: 56px 20px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="reveal eager" style="--y:-18px;--dur:0.55s;--delay:0s">
+    <header>
+      <a href="/" class="logo">
+        <img src="assets/equilibria-mark.png" alt="Equilibria" />
+        <span class="logo-name">Equilibria</span>
+      </a>
+      <nav>
+        <a href="#o-vydavatelstve">Vydavateľstvo</a>
+        <a href="#tituly">Tituly</a>
+        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener" class="active">E-shop</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="reveal eager" style="--y:14px;--dur:0.55s;--delay:0.08s">
+      <div class="hero-eyebrow">Nezávislé literárne vydavateľstvo · Bratislava</div>
+    </div>
+    <div class="reveal eager" style="--y:42px;--dur:0.82s;--delay:0.28s">
+      <h1 class="hero-title">Equilibria</h1>
+    </div>
+    <div class="reveal eager" style="--y:22px;--dur:0.7s;--delay:0.66s">
+      <div class="hero-bottom">
+        <div class="hero-rule"></div>
+        <p class="hero-tagline">Knihy, ktoré držia rovnováhu medzi slovom a tichom.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote band -->
+  <section class="quote-band">
+    <img src="assets/equilibria-figure-cream.png" alt="" class="quote-figure" />
+    <div class="quote-inner">
+      <div class="reveal" style="--y:20px;--dur:0.65s">
+        <span class="quote-mark">"</span>
+      </div>
+      <div class="reveal" style="--y:32px;--dur:0.8s;--delay:0.18s">
+        <blockquote>
+          Čítanie dobrých kníh je ako rozhovor s&nbsp;najušľachtilejšími mysľami minulých storočí.
+        </blockquote>
+      </div>
+      <div class="reveal" style="--y:16px;--dur:0.65s;--delay:0.46s">
+        <div class="quote-attribution">— René Descartes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading image -->
+  <section class="reading-section">
+    <img src="assets/books-photo.jpg" alt="Čitateľ s knihou" class="reading-photo" />
+    <div class="reading-gradient"></div>
+    <div class="reveal reading-caption" style="--y:20px;--dur:0.85s;--delay:0.35s">
+      <div class="reading-caption-label">Obraz I</div>
+      <div class="reading-caption-title">Ticho medzi stránkami</div>
+    </div>
+  </section>
+
+  <!-- E-shop CTA -->
+  <section class="cta-section" id="tituly">
+    <img src="assets/equilibria-figure-crimson.png" alt="" class="cta-figure cta-figure-left" />
+    <img src="assets/equilibria-figure-crimson.png" alt="" class="cta-figure cta-figure-right" />
+    <div class="cta-inner">
+      <div class="reveal" style="--y:18px;--dur:0.6s">
+        <div class="cta-eyebrow">Naše kníhkupectvo</div>
+      </div>
+      <div class="reveal" style="--y:38px;--dur:0.78s;--delay:0.16s">
+        <h2 class="cta-title">Objavte tituly, ktoré <em>ostávajú</em></h2>
+      </div>
+      <div class="reveal" style="--y:22px;--dur:0.72s;--delay:0.32s">
+        <p class="cta-body">
+          Romány, poézia a&nbsp;eseje, ku&nbsp;ktorým sa budete vracať. Vstúpte do sveta, kde slová zostávajú dlho po&nbsp;tom, čo zatvoríte knihu.
+        </p>
+      </div>
+      <div class="reveal" style="--y:22px;--dur:0.7s;--delay:0.5s">
+        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener" class="cta-btn">
+          Vstúpiť do e-shopu
+          <span class="cta-arrow">→</span>
+        </a>
+        <div class="cta-sub">Bezpečný nákup · doručenie po celom Slovensku</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section" id="o-vydavatelstve">
+    <div class="reveal" style="--y:28px;--dur:0.75s">
+      <div>
+        <h3 class="about-title">O vydavateľstve</h3>
+        <dl>
+          <div class="about-row">
+            <dt>Založené</dt>
+            <dd>2025</dd>
+          </div>
+          <div class="about-row">
+            <dt>Sídlo</dt>
+            <dd>Bratislava</dd>
+          </div>
+          <div class="about-row">
+            <dt>Zameranie</dt>
+            <dd>beletria · poézia · esej</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="reveal" style="--y:28px;--dur:0.75s;--delay:0.22s">
+      <div class="about-text">
+        <p>
+          <span class="about-name">Equilibria</span> je nezávislé vydavateľstvo zamerané na krásnu literatúru, poéziu a esej. Veríme v&nbsp;rovnováhu medzi slovom a&nbsp;tichom, medzi myšlienkou a&nbsp;krásou knihy ako predmetu.
+        </p>
+        <p>
+          Každý titul vzniká s&nbsp;dôrazom na text, typografiu a&nbsp;remeslo. Vydávame menej, no s&nbsp;väčšou starostlivosťou — knihy, ku&nbsp;ktorým sa čitatelia vracajú.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="reveal" style="--y:16px;--dur:0.6s">
+    <footer>
+      <div class="footer-logo">
+        <img src="assets/equilibria-mark.png" alt="" />
+        <span class="footer-logo-name">Equilibria</span>
+      </div>
+      <div class="footer-copy">© 2026 Equilibria · Všetky práva vyhradené</div>
+      <nav class="footer-nav">
+        <a href="mailto:info@equilibria.sk">Kontakt</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener">E-shop</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll-reveal via IntersectionObserver
+    const reveals = document.querySelectorAll('.reveal:not(.eager)');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
