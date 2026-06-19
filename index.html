@@ -41,19 +41,9 @@
       overflow-x: hidden;
     }
 
-    /* ── Reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(.22,.8,.32,1), transform 0.65s cubic-bezier(.22,.8,.32,1);
-    }
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
-    .reveal.delay-4 { transition-delay: 0.4s; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .trust-item, .service-card, .stat-number, .about-img,
+    .contact-item, .form-card, .section-title, .review-card { opacity: 0; }
 
-    /* ── Header ── */
     header {
       position: sticky;
       top: 0;
@@ -104,7 +94,6 @@
     }
     .nav-cta:hover { background: var(--red-deep) !important; color: var(--white) !important; }
 
-    /* ── Hero ── */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -236,7 +225,6 @@
     .hero-card.featured .hero-card-title { color: var(--white); }
     .hero-card.featured .hero-card-sub { color: rgba(255,255,255,0.8); }
 
-    /* ── Trust bar ── */
     .trust-bar {
       background: var(--gray-100);
       border-top: 1px solid var(--gray-200);
@@ -259,7 +247,6 @@
     .trust-item svg { width: 20px; height: 20px; color: var(--red); flex-shrink: 0; }
     .trust-item strong { color: var(--ink); }
 
-    /* ── Section layout ── */
     .section { padding: 96px 64px; }
     .section-sm { padding: 72px 64px; }
     .section-eyebrow {
@@ -289,7 +276,6 @@
     .section-header.centered { text-align: center; }
     .section-header.centered .section-sub { margin: 0 auto; }
 
-    /* ── Services ── */
     #sluzby { background: var(--off-white); }
     .services-grid {
       display: grid;
@@ -331,7 +317,6 @@
       color: var(--gray-600);
     }
 
-    /* ── Stats ── */
     .stats-section {
       background: var(--ink);
       color: var(--white);
@@ -359,7 +344,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── About ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -416,7 +400,6 @@
       background-position: center;
     }
 
-    /* ── Contact / Form ── */
     #kontakt { background: var(--off-white); }
     .contact-grid {
       display: grid;
@@ -518,7 +501,6 @@
     .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); }
     .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
 
-    /* ── Map ── */
     .map-section { padding: 0; }
     .map-section iframe {
       width: 100%;
@@ -527,7 +509,6 @@
       display: block;
     }
 
-    /* ── Footer ── */
     footer {
       background: var(--ink);
       color: var(--white);
@@ -581,7 +562,6 @@
       color: rgba(255,255,255,0.35);
     }
 
-    /* ── Responsive ── */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -615,7 +595,6 @@
 </head>
 <body>
 
-  <!-- ── Header ── -->
   <header>
     <a href="/" class="logo">
       <img src="assets/equilibria-mark.png" alt="Equilibria" />
@@ -629,7 +608,6 @@
     </nav>
   </header>
 
-  <!-- ── Hero ── -->
   <section class="hero">
     <div>
       <div class="reveal">
@@ -699,7 +677,6 @@
     </div>
   </section>
 
-  <!-- ── Trust bar ── -->
   <div class="trust-bar">
     <div class="trust-item reveal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -719,7 +696,6 @@
     </div>
   </div>
 
-  <!-- ── Services ── -->
   <section class="section" id="sluzby">
     <div class="section-header centered">
       <div class="section-eyebrow reveal">Naše služby</div>
@@ -728,73 +704,47 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
         <div class="service-name">Vizitky</div>
         <div class="service-desc">Štandardné, skladané, embosované alebo s UV lakom. Prvý dojem, ktorý zostane.</div>
       </div>
       <div class="service-card reveal delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
         <div class="service-name">Letáky & plagáty</div>
         <div class="service-desc">Digitálna aj ofsetová tlač. Formáty A6 až A0 s možnosťou laminovania.</div>
       </div>
       <div class="service-card reveal delay-2">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <div class="service-name">Bannery & plachty</div>
         <div class="service-desc">Veľkoformátová tlač na PVC plachtu, textil alebo mesh. Vhodné na exteriér aj interiér.</div>
       </div>
       <div class="service-card reveal delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
         <div class="service-name">Brožúry & katalógy</div>
         <div class="service-desc">Väzba V1, V2 alebo V3. Plnofarebná tlač s lesklým alebo matným lakom.</div>
       </div>
       <div class="service-card reveal delay-2">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
         <div class="service-name">Obaly & packaging</div>
         <div class="service-desc">Produktové obaly, etikety a nálepky. Potlač fólií a kartónov podľa vašich požiadaviek.</div>
       </div>
       <div class="service-card reveal delay-3">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="service-name">Individuálne zákazky</div>
         <div class="service-desc">Nemáte tu svoju položku? Kontaktujte nás — poradíme a pripravíme riešenie na mieru.</div>
       </div>
     </div>
   </section>
 
-  <!-- ── Stats ── -->
   <section class="stats-section">
     <div class="stats-grid">
-      <div class="reveal">
-        <div class="stat-number">5<span>,0</span></div>
-        <div class="stat-label">Hodnotenie Google</div>
-      </div>
-      <div class="reveal delay-1">
-        <div class="stat-number">100<span>%</span></div>
-        <div class="stat-label">Spokojnosť zákazníkov</div>
-      </div>
-      <div class="reveal delay-2">
-        <div class="stat-number">24<span>h</span></div>
-        <div class="stat-label">Expresné vybavenie</div>
-      </div>
-      <div class="reveal delay-3">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Formátov a materiálov</div>
-      </div>
+      <div class="reveal"><div class="stat-number">5<span>,0</span></div><div class="stat-label">Hodnotenie Google</div></div>
+      <div class="reveal delay-1"><div class="stat-number">100<span>%</span></div><div class="stat-label">Spokojnosť zákazníkov</div></div>
+      <div class="reveal delay-2"><div class="stat-number">24<span>h</span></div><div class="stat-label">Expresné vybavenie</div></div>
+      <div class="reveal delay-3"><div class="stat-number">∞</div><div class="stat-label">Formátov a materiálov</div></div>
     </div>
   </section>
 
-  <!-- ── About ── -->
   <section class="section" id="o-nas">
     <div class="about-grid">
       <div class="about-img reveal">
@@ -810,12 +760,8 @@
       <div class="reveal delay-2">
         <div class="section-eyebrow">O nás</div>
         <h2 class="section-title">Tlačíme s<br>dôrazom na detail</h2>
-        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;">
-          Sme Equilibria — tlačiarenská firma so sídlom v Košiciach. Každej zákazke venujeme plnú pozornosť, od výberu materiálu až po finálnu úpravu. Záleží nám na tom, aby výsledok plne zodpovedal vašim očakávaniam.
-        </p>
-        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);">
-          Nájdete nás na adrese Textilná 4 v Košiciach. Radi vám poradíme osobne, telefonicky alebo e-mailom.
-        </p>
+        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;">Sme Equilibria — tlačiarenská firma so sídlom v Košiciach. Každej zákazke venujeme plnú pozornosť, od výberu materiálu až po finálnu úpravu.</p>
+        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);">Nájdete nás na adrese Textilná 4 v Košiciach. Radi vám poradíme osobne, telefonicky alebo e-mailom.</p>
         <ul class="about-list">
           <li>Digitálna aj ofsetová tlač vo vysokej kvalite</li>
           <li>Veľkoformátová tlač — bannery, plachty, plagáty</li>
@@ -827,7 +773,6 @@
     </div>
   </section>
 
-  <!-- ── Contact + Form ── -->
   <section class="section-sm" id="kontakt">
     <div class="section-header">
       <div class="section-eyebrow reveal">Kontakt</div>
@@ -836,9 +781,7 @@
     <div class="contact-grid">
       <div class="contact-info">
         <div class="contact-item reveal">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="contact-item-label">Adresa</div>
             <div class="contact-item-value">Textilná 4, 040 12 Košice</div>
@@ -846,9 +789,7 @@
           </div>
         </div>
         <div class="contact-item reveal delay-1">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.27-.27a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div>
             <div class="contact-item-label">Telefón</div>
             <a href="tel:+421909186702" class="contact-item-value">0909 186 702</a>
@@ -856,9 +797,7 @@
           </div>
         </div>
         <div class="contact-item reveal delay-2">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div>
             <div class="contact-item-label">Otváracie hodiny</div>
             <div class="contact-item-value">Po – Pia: 8:00 – 17:00</div>
@@ -866,9 +805,7 @@
           </div>
         </div>
         <div class="contact-item reveal delay-3">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg></div>
           <div>
             <div class="contact-item-label">Web</div>
             <a href="https://equilibria.sk" target="_blank" rel="noopener" class="contact-item-value">equilibria.sk</a>
@@ -880,41 +817,27 @@
           <div class="review-author">— Zákazník, Google Mapy</div>
         </div>
       </div>
-
-      <!-- Form -->
       <div class="form-card reveal delay-1" id="cenova-ponuka">
         <div class="form-title">Získajte cenovú ponuku</div>
         <div class="form-sub">Opíšte svoju zákazku a my vám do 24 hodín pošleme ponuku.</div>
         <form onsubmit="handleSubmit(event)">
           <div class="form-row">
-            <div>
-              <label for="meno">Meno a priezvisko</label>
-              <input type="text" id="meno" name="meno" placeholder="Ján Novák" required />
-            </div>
-            <div>
-              <label for="firma">Firma (voliteľné)</label>
-              <input type="text" id="firma" name="firma" placeholder="Moja s.r.o." />
-            </div>
+            <div><label for="meno">Meno a priezvisko</label><input type="text" id="meno" name="meno" placeholder="Ján Novák" required /></div>
+            <div><label for="firma">Firma (voliteľné)</label><input type="text" id="firma" name="firma" placeholder="Moja s.r.o." /></div>
           </div>
           <div class="form-row">
-            <div>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="jan@priklad.sk" required />
-            </div>
-            <div>
-              <label for="tel">Telefón</label>
-              <input type="tel" id="tel" name="tel" placeholder="09XX XXX XXX" />
-            </div>
+            <div><label for="email">E-mail</label><input type="email" id="email" name="email" placeholder="jan@priklad.sk" required /></div>
+            <div><label for="tel">Telefón</label><input type="tel" id="tel" name="tel" placeholder="09XX XXX XXX" /></div>
           </div>
           <div class="form-group">
             <label for="sluzba">Typ zákazky</label>
             <select id="sluzba" name="sluzba" required>
               <option value="" disabled selected>Vyberte službu…</option>
               <option>Vizitky</option>
-              <option>Letáky / plagáty</option>
-              <option>Bannery / plachty</option>
-              <option>Brožúry / katalógy</option>
-              <option>Obaly / etikety</option>
+              <option>Letaky a plagaty</option>
+              <option>Bannery a plachty</option>
+              <option>Brozury a katalogy</option>
+              <option>Obaly a etikety</option>
               <option>Iná zákazka</option>
             </select>
           </div>
@@ -929,26 +852,15 @@
     </div>
   </section>
 
-  <!-- ── Map ── -->
   <div class="map-section">
-    <iframe
-      title="Equilibria na mape"
-      src="https://maps.google.com/maps?q=Textilná+4,+040+12+Košice&output=embed"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <iframe title="Equilibria na mape" src="https://maps.google.com/maps?q=Textilná+4,+040+12+Košice&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
-  <!-- ── Footer ── -->
   <footer>
     <div class="footer-top">
       <div>
-        <a href="/" class="footer-logo">
-          <img src="assets/equilibria-mark.png" alt="Equilibria" />
-          <span class="footer-logo-name">Equilibria</span>
-        </a>
-        <div class="footer-tagline">Profesionálne tlačiarenské služby<br>v Košiciach od roku 2015.</div>
+        <a href="/" class="footer-logo"><img src="assets/equilibria-mark.png" alt="Equilibria" /><span class="footer-logo-name">Equilibria</span></a>
+        <div class="footer-tagline">Profesionálne tlačiarenské služby<br>v Košiciach.</div>
       </div>
       <div>
         <div class="footer-col-title">Služby</div>
@@ -984,29 +896,97 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
   <script>
     emailjs.init('kXLXwsJknN8aGv-97');
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const { animate, inView, stagger, spring } = Motion;
 
-    // Form submit
+    // ── Hero entrance ──
+    animate('header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 30 }) });
+    animate('.hero-badge', { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, delay: 0.15, easing: spring({ stiffness: 320, damping: 28 }) });
+    animate('.hero-title', { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, delay: 0.28, easing: spring({ stiffness: 260, damping: 26 }) });
+    animate('.hero-sub', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: 0.48, easing: spring({ stiffness: 280, damping: 28 }) });
+    animate('.hero-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, delay: 0.64, easing: spring({ stiffness: 300, damping: 30 }) });
+    animate('.hero-trust', { opacity: [0, 1] }, { duration: 0.5, delay: 0.82 });
+    animate('.hero-card', { opacity: [0, 1], x: [48, 0] }, { duration: 0.6, delay: stagger(0.12, { start: 0.35 }), easing: spring({ stiffness: 280, damping: 26 }) });
+
+    // ── Scroll reveals ──
+    inView('.trust-item', (el) => {
+      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-60px' });
+
+    inView('.service-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
+    }, { margin: '-40px' });
+
+    inView('.stat-number', (el) => {
+      animate(el, { opacity: [0, 1], scale: [0.7, 1] }, { duration: 0.65, easing: spring({ stiffness: 300, damping: 22 }) });
+    }, { margin: '-40px' });
+
+    inView('.about-img', (el) => {
+      animate(el, { opacity: [0, 1], x: [-48, 0] }, { duration: 0.75, easing: spring({ stiffness: 260, damping: 28 }) });
+    }, { margin: '-60px' });
+
+    inView('.contact-item', (el) => {
+      animate(el, { opacity: [0, 1], x: [-24, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    inView('.form-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.65, easing: spring({ stiffness: 280, damping: 26 }) });
+    }, { margin: '-40px' });
+
+    inView('.section-title', (el) => {
+      animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    inView('.review-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    // ── Hover on service cards ──
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () =>
+        animate(card, { scale: 1.03 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+      );
+      card.addEventListener('mouseleave', () =>
+        animate(card, { scale: 1 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+      );
+    });
+
+    // ── Hover on buttons ──
+    document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
+      btn.addEventListener('mouseenter', () =>
+        animate(btn, { scale: 1.04 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 30 }) })
+      );
+      btn.addEventListener('mouseleave', () =>
+        animate(btn, { scale: 1 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 32 }) })
+      );
+    });
+
+    // ── Hover on hero cards ──
+    document.querySelectorAll('.hero-card').forEach(card => {
+      card.addEventListener('mouseenter', () =>
+        animate(card, { scale: 1.02, x: 6 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+      );
+      card.addEventListener('mouseleave', () =>
+        animate(card, { scale: 1, x: 0 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+      );
+    });
+
+    // ── Stat counter animation ──
+    inView('.stats-grid', () => {
+      document.querySelectorAll('.stat-number').forEach(el => {
+        animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: spring({ stiffness: 280, damping: 24 }) });
+      });
+    }, { margin: '-60px' });
+
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('.form-submit');
-
       btn.textContent = 'Odosielam…';
       btn.disabled = true;
-
       emailjs.sendForm('service_43xvxme', 'template_my1gg5n', form)
         .then(() => {
           btn.textContent = '✓ Dopyt odoslaný!';
