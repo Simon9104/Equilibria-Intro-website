@@ -983,7 +983,10 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
+    emailjs.init('kXLXwsJknN8aGv-97');
+
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -998,16 +1001,32 @@
     // Form submit
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '✓ Dopyt odoslaný!';
-      btn.style.background = '#16a34a';
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+
+      btn.textContent = 'Odosielam…';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Odoslať dopyt →';
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 4000);
+
+      emailjs.sendForm('service_43xvxme', 'template_my1gg5n', form)
+        .then(() => {
+          btn.textContent = '✓ Dopyt odoslaný!';
+          btn.style.background = '#16a34a';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = 'Odoslať dopyt →';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        })
+        .catch(() => {
+          btn.textContent = '✗ Chyba, skúste znova';
+          btn.style.background = '#dc2626';
+          btn.disabled = false;
+          setTimeout(() => {
+            btn.textContent = 'Odoslať dopyt →';
+            btn.style.background = '';
+          }, 3000);
+        });
     }
   </script>
 </body>
