@@ -3,591 +3,1012 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equilibria · Nezávislé literárne vydavateľstvo</title>
-  <meta name="description" content="Equilibria je nezávislé vydavateľstvo zamerané na krásnu literatúru, poéziu a esej. Knihy, ktoré držia rovnováhu medzi slovom a tichom." />
-  <meta property="og:title" content="Equilibria · Nezávislé literárne vydavateľstvo" />
-  <meta property="og:description" content="Knihy, ktoré držia rovnováhu medzi slovom a tichom." />
-  <meta property="og:type" content="website" />
+  <title>Equilibria · Tlačiarenské služby Košice</title>
+  <meta name="description" content="Equilibria – profesionálne tlačiarenské služby v Košiciach. Vizitky, letáky, bannery, veľkoformátová tlač a ďalšie. Textilná 4, Košice." />
   <link rel="icon" type="image/png" href="assets/equilibria-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --crimson: #AF1D1E;
-      --crimson-deep: #8E1517;
-      --cream: #F4EFE6;
-      --ink: #221E1C;
-      --ink-soft: #52483F;
-      --line: rgba(34,30,28,0.16);
+      --red: #AF1D1E;
+      --red-deep: #8E1517;
+      --red-light: #fdf2f2;
+      --white: #ffffff;
+      --off-white: #f8f8f8;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --ink: #111827;
       --display: 'Playfair Display', Georgia, serif;
-      --body: 'EB Garamond', Georgia, serif;
-      --mono: 'IBM Plex Mono', monospace;
+      --body: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--body);
-      background: var(--cream);
+      background: var(--white);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* Reveal animation */
+    /* ── Reveal ── */
     .reveal {
       opacity: 0;
-      transform: translateY(var(--y, 26px));
-      transition:
-        opacity var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s),
-        transform var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s);
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(.22,.8,.32,1), transform 0.65s cubic-bezier(.22,.8,.32,1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal.eager {
-      opacity: 0;
-      transform: translateY(var(--y, 26px));
-      animation: reveal-in var(--dur, 0.75s) cubic-bezier(.22,.8,.32,1) var(--delay, 0s) forwards;
-    }
-    @keyframes reveal-in {
-      to { opacity: 1; transform: none; }
-    }
+    .reveal.delay-1 { transition-delay: 0.1s; }
+    .reveal.delay-2 { transition-delay: 0.2s; }
+    .reveal.delay-3 { transition-delay: 0.3s; }
+    .reveal.delay-4 { transition-delay: 0.4s; }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    /* Header */
+    /* ── Header ── */
     header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 26px 64px;
-      border-bottom: 1px solid var(--line);
+      padding: 0 64px;
+      height: 72px;
     }
     .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
       color: var(--ink);
     }
-    .logo img { width: 40px; height: 40px; }
+    .logo img { width: 36px; height: 36px; object-fit: contain; }
     .logo-name {
       font-family: var(--display);
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
     nav {
       display: flex;
-      gap: 36px;
-      font-family: var(--mono);
-      font-size: 15px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      white-space: nowrap;
+      align-items: center;
+      gap: 32px;
     }
     nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-600);
       text-decoration: none;
-      color: inherit;
-      transition: color 0.2s;
+      transition: color 0.15s;
     }
     nav a:hover { color: var(--ink); }
-    nav a.active { color: var(--crimson); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-deep) !important; color: var(--white) !important; }
 
-    /* Hero */
+    /* ── Hero ── */
     .hero {
-      position: relative;
-      padding: 92px 64px 84px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 96px 64px;
+      background: var(--white);
+      min-height: calc(100vh - 72px);
     }
-    .hero-eyebrow {
-      font-family: var(--mono);
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-light);
+      color: var(--red);
       font-size: 13px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      margin-bottom: 30px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
     }
+    .hero-badge svg { width: 14px; height: 14px; }
     .hero-title {
       font-family: var(--display);
+      font-size: clamp(42px, 5.5vw, 72px);
       font-weight: 800;
-      font-size: clamp(100px, 17.2vw, 248px);
-      line-height: 0.9;
+      line-height: 1.08;
       letter-spacing: -0.02em;
-      color: var(--crimson);
+      color: var(--ink);
+      margin-bottom: 20px;
     }
-    .hero-bottom {
+    .hero-title span { color: var(--red); }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--gray-600);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero-actions {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 40px;
-      gap: 48px;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .hero-rule {
-      height: 1px;
-      background: var(--line);
-      flex: 1;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--red-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(175,29,30,0.28);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 15px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--gray-200);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--gray-400);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+    .stars { color: #f59e0b; font-size: 16px; letter-spacing: 1px; }
+    .hero-trust strong { color: var(--ink); }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--red-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-card-icon svg { width: 24px; height: 24px; color: var(--red); }
+    .hero-card-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+    .hero-card-sub { font-size: 13px; color: var(--gray-600); }
+    .hero-card.featured {
+      border-color: var(--red);
+      background: var(--red);
+      color: var(--white);
+    }
+    .hero-card.featured .hero-card-icon { background: rgba(255,255,255,0.18); }
+    .hero-card.featured .hero-card-icon svg { color: var(--white); }
+    .hero-card.featured .hero-card-title { color: var(--white); }
+    .hero-card.featured .hero-card-sub { color: rgba(255,255,255,0.8); }
+
+    /* ── Trust bar ── */
+    .trust-bar {
+      background: var(--gray-100);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 28px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .trust-item svg { width: 20px; height: 20px; color: var(--red); flex-shrink: 0; }
+    .trust-item strong { color: var(--ink); }
+
+    /* ── Section layout ── */
+    .section { padding: 96px 64px; }
+    .section-sm { padding: 72px 64px; }
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
       margin-bottom: 16px;
     }
-    .hero-tagline {
-      font-family: var(--display);
-      font-size: clamp(22px, 2.4vw, 34px);
-      font-style: italic;
-      line-height: 1.3;
-      color: var(--ink-soft);
+    .section-sub {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--gray-600);
       max-width: 560px;
-      text-align: right;
     }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
 
-    /* Quote band */
-    .quote-band {
-      position: relative;
-      background: var(--crimson);
-      color: var(--cream);
-      padding: 110px 64px;
-      overflow: hidden;
+    /* ── Services ── */
+    #sluzby { background: var(--off-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-    .quote-figure {
-      position: absolute;
-      right: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 560px;
-      opacity: 0.5;
-      pointer-events: none;
-      user-select: none;
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
     }
-    .quote-inner {
-      position: relative;
-      max-width: 980px;
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: transparent;
     }
-    .quote-mark {
-      font-family: var(--display);
-      font-size: 140px;
-      line-height: 0.5;
-      display: block;
-      height: 70px;
-      opacity: 0.5;
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--red-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
     }
-    blockquote {
-      font-family: var(--display);
-      font-weight: 500;
-      font-style: italic;
-      font-size: clamp(32px, 4vw, 58px);
-      line-height: 1.28;
-      margin: 0 0 36px;
+    .service-icon svg { width: 26px; height: 26px; color: var(--red); }
+    .service-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
-    .quote-attribution {
-      font-family: var(--mono);
+    .service-desc {
       font-size: 14px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      opacity: 0.85;
+      line-height: 1.65;
+      color: var(--gray-600);
     }
 
-    /* Reading image */
-    .reading-section {
-      position: relative;
-      height: 760px;
+    /* ── Stats ── */
+    .stats-section {
+      background: var(--ink);
+      color: var(--white);
+      padding: 80px 64px;
     }
-    .reading-section img.reading-photo {
-      position: absolute;
-      inset: 0;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--display);
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-number span { color: var(--red); }
+    .stat-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+    .about-img {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--gray-100);
+    }
+    .about-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .reading-gradient {
+    .about-badge {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(20,18,16,0.6), rgba(20,18,16,0) 42%);
-      pointer-events: none;
-    }
-    .reading-caption {
-      position: absolute;
-      left: 64px;
-      bottom: 56px;
-      pointer-events: none;
-    }
-    .reading-caption-label {
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--cream);
-      opacity: 0.75;
-      margin-bottom: 10px;
-    }
-    .reading-caption-title {
-      font-family: var(--display);
-      font-size: 40px;
-      font-style: italic;
-      color: var(--cream);
-    }
-
-    /* CTA Section */
-    .cta-section {
-      position: relative;
-      overflow: hidden;
-      background: var(--cream);
-      color: var(--ink);
-      padding: 136px 64px;
-      text-align: center;
-    }
-    .cta-figure {
-      position: absolute;
-      pointer-events: none;
-      user-select: none;
-    }
-    .cta-figure-left {
-      left: -130px;
-      bottom: -130px;
-      width: 520px;
-      opacity: 0.10;
-    }
-    .cta-figure-right {
-      right: -150px;
-      top: -150px;
-      width: 440px;
-      opacity: 0.08;
-      transform: scaleX(-1);
-    }
-    .cta-inner { position: relative; }
-    .cta-eyebrow {
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      margin-bottom: 30px;
-    }
-    .cta-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(56px, 7vw, 100px);
-      line-height: 0.98;
-      letter-spacing: -0.01em;
-      margin: 0 auto 28px;
-      max-width: 1040px;
-      color: var(--ink);
-    }
-    .cta-title em {
-      font-style: italic;
-      color: var(--crimson);
-    }
-    .cta-body {
-      font-family: var(--display);
-      font-size: clamp(20px, 2.2vw, 31px);
-      font-style: italic;
-      line-height: 1.5;
-      color: var(--ink-soft);
-      margin: 0 auto 54px;
-      max-width: 700px;
-    }
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-      background: var(--crimson);
-      color: var(--cream);
-      text-decoration: none;
-      padding: 27px 62px;
-      font-size: 22px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-family: var(--mono);
-      white-space: nowrap;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .cta-btn:hover {
-      background: var(--crimson-deep);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(175,29,30,0.28);
-    }
-    .cta-btn:hover .cta-arrow { transform: translateX(7px); }
-    .cta-arrow { font-size: 24px; transition: transform 0.2s; }
-    .cta-sub {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      opacity: 0.7;
-      margin-top: 26px;
-    }
-
-    /* About */
-    .about-section {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 80px;
-      padding: 116px 64px;
-      border-top: 1px solid var(--line);
-    }
-    .about-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(36px, 3.75vw, 54px);
-      line-height: 1.05;
-      margin: 0 0 40px;
-      color: var(--ink);
-    }
-    dl { margin: 0; }
-    .about-row {
+      bottom: 24px;
+      left: 24px;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
       display: flex;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 18px;
+      align-items: center;
+      gap: 12px;
     }
-    dt {
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
+    .about-badge-icon { font-size: 28px; }
+    .about-badge-text { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .about-badge-sub { font-size: 12px; color: var(--gray-600); font-weight: 400; }
+    .about-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.5;
     }
-    dd {
-      margin: 0;
-      color: var(--ink-soft);
+    .about-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--red-light);
+      flex-shrink: 0;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23AF1D1E'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
     }
-    .about-text {
-      font-size: clamp(18px, 1.74vw, 25px);
-      line-height: 1.7;
-      color: var(--ink-soft);
-    }
-    .about-text p { margin: 0 0 28px; }
-    .about-text p:last-child { margin: 0; }
-    .about-name { font-family: var(--display); color: var(--ink); }
 
-    /* Footer */
+    /* ── Contact / Form ── */
+    #kontakt { background: var(--off-white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+    }
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--red-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-item-icon svg { width: 20px; height: 20px; color: var(--red); }
+    .contact-item-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 4px; }
+    .contact-item-value { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .contact-item-value:hover { color: var(--red); }
+    .contact-item-sub { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .review-stars { color: #f59e0b; font-size: 18px; margin-bottom: 8px; }
+    .review-text { font-size: 14px; color: var(--gray-600); line-height: 1.6; font-style: italic; margin-bottom: 10px; }
+    .review-author { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .form-title { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .form-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      font-family: var(--body);
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(175,29,30,0.12);
+    }
+    textarea { resize: vertical; min-height: 110px; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 18px;
+      padding-right: 38px;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); }
+    .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
+
+    /* ── Map ── */
+    .map-section { padding: 0; }
+    .map-section iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+    }
+
+    /* ── Footer ── */
     footer {
       background: var(--ink);
-      color: var(--cream);
-      padding: 48px 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      color: var(--white);
+      padding: 56px 64px 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .footer-logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
+      margin-bottom: 16px;
+      text-decoration: none;
     }
-    .footer-logo img { width: 34px; height: 34px; }
+    .footer-logo img { width: 32px; height: 32px; }
     .footer-logo-name {
       font-family: var(--display);
       font-size: 18px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .footer-copy {
-      font-family: var(--mono);
-      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
       letter-spacing: 0.08em;
-      opacity: 0.7;
     }
-    .footer-nav {
-      display: flex;
-      gap: 28px;
-      font-family: var(--mono);
-      font-size: 15px;
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      opacity: 0.85;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 18px;
     }
-    .footer-nav a {
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
-      color: inherit;
-      transition: opacity 0.2s;
+      transition: color 0.15s;
     }
-    .footer-nav a:hover { opacity: 1; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
 
-    /* Responsive */
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
     @media (max-width: 900px) {
-      header { padding: 20px 28px; }
-      nav { gap: 20px; font-size: 13px; }
-      .hero { padding: 56px 28px 56px; }
-      .hero-bottom { flex-direction: column; gap: 20px; }
-      .hero-rule { display: none; }
-      .hero-tagline { text-align: left; max-width: 100%; }
-      .quote-band { padding: 72px 28px; }
-      .quote-figure { display: none; }
-      .reading-section { height: 480px; }
-      .reading-caption { left: 28px; bottom: 32px; }
-      .cta-section { padding: 80px 28px; }
-      .about-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
-      footer { flex-direction: column; gap: 28px; text-align: center; padding: 40px 28px; }
-      .footer-nav { flex-wrap: wrap; justify-content: center; }
+      header { padding: 0 28px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 48px; padding: 64px 28px; min-height: auto; }
+      .hero-visual { order: -1; }
+      .trust-bar { padding: 24px 28px; gap: 24px; }
+      .section { padding: 72px 28px; }
+      .section-sm { padding: 56px 28px; }
+      .stats-section { padding: 56px 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      footer { padding: 48px 28px 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
-
-    @media (max-width: 540px) {
-      header { padding: 16px 20px; }
-      nav { display: none; }
-      .hero { padding: 44px 20px 44px; }
-      .quote-band { padding: 56px 20px; }
-      .reading-caption { left: 20px; bottom: 24px; }
-      .reading-caption-title { font-size: 28px; }
-      .cta-section { padding: 64px 20px; }
-      .cta-btn { padding: 22px 36px; font-size: 18px; }
-      .about-section { padding: 56px 20px; }
-      footer { padding: 32px 20px; }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .trust-bar { flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px 28px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .form-card { padding: 28px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <div class="reveal eager" style="--y:-18px;--dur:0.55s;--delay:0s">
-    <header>
-      <a href="/" class="logo">
-        <img src="assets/equilibria-mark.png" alt="Equilibria" />
-        <span class="logo-name">Equilibria</span>
-      </a>
-      <nav>
-        <a href="#o-vydavatelstve">Vydavateľstvo</a>
-        <a href="#tituly">Tituly</a>
-        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener" class="active">E-shop</a>
-      </nav>
-    </header>
-  </div>
+  <!-- ── Header ── -->
+  <header>
+    <a href="/" class="logo">
+      <img src="assets/equilibria-mark.png" alt="Equilibria" />
+      <span class="logo-name">Equilibria</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#sluzby">Služby</a>
+      <a href="#o-nas">O nás</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#cenova-ponuka" class="nav-cta">Cenová ponuka</a>
+    </nav>
+  </header>
 
-  <!-- Hero -->
+  <!-- ── Hero ── -->
   <section class="hero">
-    <div class="reveal eager" style="--y:14px;--dur:0.55s;--delay:0.08s">
-      <div class="hero-eyebrow">Nezávislé literárne vydavateľstvo · Bratislava</div>
-    </div>
-    <div class="reveal eager" style="--y:42px;--dur:0.82s;--delay:0.28s">
-      <h1 class="hero-title">Equilibria</h1>
-    </div>
-    <div class="reveal eager" style="--y:22px;--dur:0.7s;--delay:0.66s">
-      <div class="hero-bottom">
-        <div class="hero-rule"></div>
-        <p class="hero-tagline">Knihy, ktoré držia rovnováhu medzi slovom a tichom.</p>
+    <div>
+      <div class="reveal">
+        <div class="hero-badge">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          5,0 · Hodnotenie zákazníkov
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Quote band -->
-  <section class="quote-band">
-    <img src="assets/equilibria-figure-cream.png" alt="" class="quote-figure" />
-    <div class="quote-inner">
-      <div class="reveal" style="--y:20px;--dur:0.65s">
-        <span class="quote-mark">“</span>
+      <div class="reveal delay-1">
+        <h1 class="hero-title">
+          Profesionálna<br>
+          <span>tlač</span> pre váš<br>
+          biznis
+        </h1>
       </div>
-      <div class="reveal" style="--y:32px;--dur:0.8s;--delay:0.18s">
-        <blockquote>
-          Čítanie dobrých kníh je ako rozhovor s najušľachtilejšími mysľami minulých storočí.
-        </blockquote>
-      </div>
-      <div class="reveal" style="--y:16px;--dur:0.65s;--delay:0.46s">
-        <div class="quote-attribution">— René Descartes</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reading image -->
-  <section class="reading-section">
-    <img src="assets/books-photo.jpg" alt="Čitateľ s knihou" class="reading-photo" />
-    <div class="reading-gradient"></div>
-    <div class="reveal reading-caption" style="--y:20px;--dur:0.85s;--delay:0.35s">
-      <div class="reading-caption-label">Obraz I</div>
-      <div class="reading-caption-title">Ticho medzi stránkami</div>
-    </div>
-  </section>
-
-  <!-- E-shop CTA -->
-  <section class="cta-section" id="tituly">
-    <img src="assets/equilibria-figure-crimson.png" alt="" class="cta-figure cta-figure-left" />
-    <img src="assets/equilibria-figure-crimson.png" alt="" class="cta-figure cta-figure-right" />
-    <div class="cta-inner">
-      <div class="reveal" style="--y:18px;--dur:0.6s">
-        <div class="cta-eyebrow">Naše kníhkupectvo</div>
-      </div>
-      <div class="reveal" style="--y:38px;--dur:0.78s;--delay:0.16s">
-        <h2 class="cta-title">Objavte tituly, ktoré <em>ostávajú</em></h2>
-      </div>
-      <div class="reveal" style="--y:22px;--dur:0.72s;--delay:0.32s">
-        <p class="cta-body">
-          Romány, poézia a eseje, ku ktorým sa budete vracať. Vstúpte do sveta, kde slová zostávajú dlho po tom, čo zatvoríte knihu.
+      <div class="reveal delay-2">
+        <p class="hero-sub">
+          Vizitky, letáky, bannery, veľkoformátová tlač a ďalšie. Kvalitná tlač s rýchlym vybavením priamo v Košiciach.
         </p>
       </div>
-      <div class="reveal" style="--y:22px;--dur:0.7s;--delay:0.5s">
-        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener" class="cta-btn">
-          Vstúpiť do e-shopu
-          <span class="cta-arrow">→</span>
-        </a>
-        <div class="cta-sub">Bezpečný nákup · doručenie po celom Slovensku</div>
+      <div class="reveal delay-3">
+        <div class="hero-actions">
+          <a href="#cenova-ponuka" class="btn-primary">
+            Získať cenovú ponuku
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="tel:+421909186702" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd"/></svg>
+            0909 186 702
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span class="stars">★★★★★</span>
+          <strong>5,0</strong>
+          &nbsp;·&nbsp; hodnotení: 3 &nbsp;·&nbsp; Google Mapy
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal delay-2">
+      <div class="hero-card featured">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Veľkoformátová tlač</div>
+          <div class="hero-card-sub">Bannery, plagáty, PVC plachty</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Firemná identita</div>
+          <div class="hero-card-sub">Vizitky, hlavičkové papiere, obálky</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Letáky & katalógy</div>
+          <div class="hero-card-sub">Ofsetová a digitálna tlač</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="about-section" id="o-vydavatelstve">
-    <div class="reveal" style="--y:28px;--dur:0.75s">
-      <div>
-        <h3 class="about-title">O vydavateľstve</h3>
-        <dl>
-          <div class="about-row">
-            <dt>Založené</dt>
-            <dd>2025</dd>
-          </div>
-          <div class="about-row">
-            <dt>Sídlo</dt>
-            <dd>Bratislava</dd>
-          </div>
-          <div class="about-row">
-            <dt>Zameranie</dt>
-            <dd>beletria · poézia · esej</dd>
-          </div>
-        </dl>
-      </div>
+  <!-- ── Trust bar ── -->
+  <div class="trust-bar">
+    <div class="trust-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Rýchle vybavenie</strong> — expresné termíny</span>
     </div>
-    <div class="reveal" style="--y:28px;--dur:0.75s;--delay:0.22s">
-      <div class="about-text">
-        <p>
-          <span class="about-name">Equilibria</span> je nezávislé vydavateľstvo zamerané na krásnu literatúru, poéziu a esej. Veríme v rovnováhu medzi slovom a tichom, medzi myšlienkou a krásou knihy ako predmetu.
-        </p>
-        <p>
-          Každý titul vzniká s dôrazom na text, typografiu a remeslo. Vydávame menej, no s väčšou starostlivosťou — knihy, ku ktorým sa čitatelia vracajú.
-        </p>
-      </div>
+    <div class="trust-item reveal delay-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span><strong>Otvorené</strong> Po–Pia od 8:00</span>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <div class="reveal" style="--y:16px;--dur:0.6s">
-    <footer>
-      <div class="footer-logo">
-        <img src="assets/equilibria-mark.png" alt="" />
-        <span class="footer-logo-name">Equilibria</span>
-      </div>
-      <div class="footer-copy">© 2026 Equilibria · Všetky práva vyhradené</div>
-      <nav class="footer-nav">
-        <a href="mailto:info@equilibria.sk">Kontakt</a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.iqknihy.sk" target="_blank" rel="noopener">E-shop</a>
-      </nav>
-    </footer>
+    <div class="trust-item reveal delay-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <span><strong>Individuálny prístup</strong> ku každej zákazke</span>
+    </div>
+    <div class="trust-item reveal delay-3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span><strong>Overená kvalita</strong> — 5,0 na Google</span>
+    </div>
   </div>
+
+  <!-- ── Services ── -->
+  <section class="section" id="sluzby">
+    <div class="section-header centered">
+      <div class="section-eyebrow reveal">Naše služby</div>
+      <h2 class="section-title reveal delay-1">Čo tlačíme</h2>
+      <p class="section-sub reveal delay-2">Komplexné tlačiarenské riešenia pre firmy aj jednotlivcov. Od malých zákaziek až po veľkovýrobu.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div class="service-name">Vizitky</div>
+        <div class="service-desc">Štandardné, skladané, embosované alebo s UV lakom. Prvý dojem, ktorý zostane.</div>
+      </div>
+      <div class="service-card reveal delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="service-name">Letáky & plagáty</div>
+        <div class="service-desc">Digitálna aj ofsetová tlač. Formáty A6 až A0 s možnosťou laminovania.</div>
+      </div>
+      <div class="service-card reveal delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="service-name">Bannery & plachty</div>
+        <div class="service-desc">Veľkoformátová tlač na PVC plachtu, textil alebo mesh. Vhodné na exteriér aj interiér.</div>
+      </div>
+      <div class="service-card reveal delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <div class="service-name">Brožúry & katalógy</div>
+        <div class="service-desc">Väzba V1, V2 alebo V3. Plnofarebná tlač s lesklým alebo matným lakom.</div>
+      </div>
+      <div class="service-card reveal delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="service-name">Obaly & packaging</div>
+        <div class="service-desc">Produktové obaly, etikety a nálepky. Potlač fólií a kartónov podľa vašich požiadaviek.</div>
+      </div>
+      <div class="service-card reveal delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="service-name">Individuálne zákazky</div>
+        <div class="service-desc">Nemáte tu svoju položku? Kontaktujte nás — poradíme a pripravíme riešenie na mieru.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="reveal">
+        <div class="stat-number">5<span>,0</span></div>
+        <div class="stat-label">Hodnotenie Google</div>
+      </div>
+      <div class="reveal delay-1">
+        <div class="stat-number">100<span>%</span></div>
+        <div class="stat-label">Spokojnosť zákazníkov</div>
+      </div>
+      <div class="reveal delay-2">
+        <div class="stat-number">24<span>h</span></div>
+        <div class="stat-label">Expresné vybavenie</div>
+      </div>
+      <div class="reveal delay-3">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Formátov a materiálov</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section class="section" id="o-nas">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="assets/books-photo.jpg" alt="Equilibria tlačiareň" />
+        <div class="about-badge">
+          <div class="about-badge-icon">🏆</div>
+          <div>
+            <div class="about-badge-text">5,0 · Google Mapy</div>
+            <div class="about-badge-sub">Overené hodnotenia zákazníkov</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal delay-2">
+        <div class="section-eyebrow">O nás</div>
+        <h2 class="section-title">Tlačíme s<br>dôrazom na detail</h2>
+        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;">
+          Sme Equilibria — tlačiarenská firma so sídlom v Košiciach. Každej zákazke venujeme plnú pozornosť, od výberu materiálu až po finálnu úpravu. Záleží nám na tom, aby výsledok plne zodpovedal vašim očakávaniam.
+        </p>
+        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);">
+          Nájdete nás na adrese Textilná 4 v Košiciach. Radi vám poradíme osobne, telefonicky alebo e-mailom.
+        </p>
+        <ul class="about-list">
+          <li>Digitálna aj ofsetová tlač vo vysokej kvalite</li>
+          <li>Veľkoformátová tlač — bannery, plachty, plagáty</li>
+          <li>Rýchle vybavenie expresných zákaziek</li>
+          <li>Poradenstvo pri výbere materiálov a technológií</li>
+          <li>Firemné zákazky aj malé série pre jednotlivcov</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact + Form ── -->
+  <section class="section-sm" id="kontakt">
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Kontakt</div>
+      <h2 class="section-title reveal delay-1">Ozvite sa nám</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Adresa</div>
+            <div class="contact-item-value">Textilná 4, 040 12 Košice</div>
+            <div class="contact-item-sub">Nad jazerom, Košice</div>
+          </div>
+        </div>
+        <div class="contact-item reveal delay-1">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Telefón</div>
+            <a href="tel:+421909186702" class="contact-item-value">0909 186 702</a>
+            <div class="contact-item-sub">Voláme v pracovných hodinách</div>
+          </div>
+        </div>
+        <div class="contact-item reveal delay-2">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Otváracie hodiny</div>
+            <div class="contact-item-value">Po – Pia: 8:00 – 17:00</div>
+            <div class="contact-item-sub">Víkendy a sviatky: zatvorené</div>
+          </div>
+        </div>
+        <div class="contact-item reveal delay-3">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Web</div>
+            <a href="https://equilibria.sk" target="_blank" rel="noopener" class="contact-item-value">equilibria.sk</a>
+          </div>
+        </div>
+        <div class="review-card reveal delay-2">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Skvelá kvalita tlače, rýchle vybavenie a ochotný prístup. Určite odporúčam!"</div>
+          <div class="review-author">— Zákazník, Google Mapy</div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card reveal delay-1" id="cenova-ponuka">
+        <div class="form-title">Získajte cenovú ponuku</div>
+        <div class="form-sub">Opíšte svoju zákazku a my vám do 24 hodín pošleme ponuku.</div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div>
+              <label for="meno">Meno a priezvisko</label>
+              <input type="text" id="meno" name="meno" placeholder="Ján Novák" required />
+            </div>
+            <div>
+              <label for="firma">Firma (voliteľné)</label>
+              <input type="text" id="firma" name="firma" placeholder="Moja s.r.o." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="jan@priklad.sk" required />
+            </div>
+            <div>
+              <label for="tel">Telefón</label>
+              <input type="tel" id="tel" name="tel" placeholder="09XX XXX XXX" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sluzba">Typ zákazky</label>
+            <select id="sluzba" name="sluzba" required>
+              <option value="" disabled selected>Vyberte službu…</option>
+              <option>Vizitky</option>
+              <option>Letáky / plagáty</option>
+              <option>Bannery / plachty</option>
+              <option>Brožúry / katalógy</option>
+              <option>Obaly / etikety</option>
+              <option>Iná zákazka</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sprava">Popis zákazky</label>
+            <textarea id="sprava" name="sprava" placeholder="Formát, množstvo, materiál, termín… čím viac informácií, tým presnejšia ponuka." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Odoslať dopyt →</button>
+          <div class="form-note">Odpovieme do 24 hodín v pracovných dňoch.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Map ── -->
+  <div class="map-section">
+    <iframe
+      title="Equilibria na mape"
+      src="https://maps.google.com/maps?q=Textilná+4,+040+12+Košice&output=embed"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="/" class="footer-logo">
+          <img src="assets/equilibria-mark.png" alt="Equilibria" />
+          <span class="footer-logo-name">Equilibria</span>
+        </a>
+        <div class="footer-tagline">Profesionálne tlačiarenské služby<br>v Košiciach od roku 2015.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Služby</div>
+        <ul class="footer-links">
+          <li><a href="#sluzby">Vizitky</a></li>
+          <li><a href="#sluzby">Letáky & plagáty</a></li>
+          <li><a href="#sluzby">Bannery & plachty</a></li>
+          <li><a href="#sluzby">Brožúry & katalógy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Spoločnosť</div>
+        <ul class="footer-links">
+          <li><a href="#o-nas">O nás</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#cenova-ponuka">Cenová ponuka</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="tel:+421909186702">0909 186 702</a></li>
+          <li><a href="https://equilibria.sk" target="_blank" rel="noopener">equilibria.sk</a></li>
+          <li><a>Textilná 4, Košice</a></li>
+          <li><a>Po–Pia 8:00–17:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Equilibria · Všetky práva vyhradené</div>
+      <div>Textilná 4, 040 12 Košice · 0909 186 702</div>
+    </div>
+  </footer>
 
   <script>
-    // Scroll-reveal via IntersectionObserver
-    const reveals = document.querySelectorAll('.reveal:not(.eager)');
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
         }
       });
-    }, { threshold: 0.06 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Dopyt odoslaný!';
+      btn.style.background = '#16a34a';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Odoslať dopyt →';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+  </script>
 </body>
 </html>
