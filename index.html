@@ -41,16 +41,8 @@
       overflow-x: hidden;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(.22,.8,.32,1), transform 0.65s cubic-bezier(.22,.8,.32,1);
-    }
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
-    .reveal.delay-4 { transition-delay: 0.4s; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .trust-item, .service-card, .stat-number, .about-img,
+    .contact-item, .form-card, .section-title, .review-card { opacity: 0; }
 
     header {
       position: sticky;
@@ -904,18 +896,90 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
   <script>
     emailjs.init('kXLXwsJknN8aGv-97');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
+    const { animate, inView, stagger, spring } = Motion;
+
+    // ── Hero entrance ──
+    animate('header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 30 }) });
+    animate('.hero-badge', { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, delay: 0.15, easing: spring({ stiffness: 320, damping: 28 }) });
+    animate('.hero-title', { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, delay: 0.28, easing: spring({ stiffness: 260, damping: 26 }) });
+    animate('.hero-sub', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: 0.48, easing: spring({ stiffness: 280, damping: 28 }) });
+    animate('.hero-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, delay: 0.64, easing: spring({ stiffness: 300, damping: 30 }) });
+    animate('.hero-trust', { opacity: [0, 1] }, { duration: 0.5, delay: 0.82 });
+    animate('.hero-card', { opacity: [0, 1], x: [48, 0] }, { duration: 0.6, delay: stagger(0.12, { start: 0.35 }), easing: spring({ stiffness: 280, damping: 26 }) });
+
+    // ── Scroll reveals ──
+    inView('.trust-item', (el) => {
+      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-60px' });
+
+    inView('.service-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
+    }, { margin: '-40px' });
+
+    inView('.stat-number', (el) => {
+      animate(el, { opacity: [0, 1], scale: [0.7, 1] }, { duration: 0.65, easing: spring({ stiffness: 300, damping: 22 }) });
+    }, { margin: '-40px' });
+
+    inView('.about-img', (el) => {
+      animate(el, { opacity: [0, 1], x: [-48, 0] }, { duration: 0.75, easing: spring({ stiffness: 260, damping: 28 }) });
+    }, { margin: '-60px' });
+
+    inView('.contact-item', (el) => {
+      animate(el, { opacity: [0, 1], x: [-24, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    inView('.form-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.65, easing: spring({ stiffness: 280, damping: 26 }) });
+    }, { margin: '-40px' });
+
+    inView('.section-title', (el) => {
+      animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    inView('.review-card', (el) => {
+      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+    }, { margin: '-40px' });
+
+    // ── Hover on service cards ──
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () =>
+        animate(card, { scale: 1.03 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+      );
+      card.addEventListener('mouseleave', () =>
+        animate(card, { scale: 1 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+      );
+    });
+
+    // ── Hover on buttons ──
+    document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
+      btn.addEventListener('mouseenter', () =>
+        animate(btn, { scale: 1.04 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 30 }) })
+      );
+      btn.addEventListener('mouseleave', () =>
+        animate(btn, { scale: 1 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 32 }) })
+      );
+    });
+
+    // ── Hover on hero cards ──
+    document.querySelectorAll('.hero-card').forEach(card => {
+      card.addEventListener('mouseenter', () =>
+        animate(card, { scale: 1.02, x: 6 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+      );
+      card.addEventListener('mouseleave', () =>
+        animate(card, { scale: 1, x: 0 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+      );
+    });
+
+    // ── Stat counter animation ──
+    inView('.stats-grid', () => {
+      document.querySelectorAll('.stat-number').forEach(el => {
+        animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: spring({ stiffness: 280, damping: 24 }) });
       });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, { margin: '-60px' });
 
     function handleSubmit(e) {
       e.preventDefault();
