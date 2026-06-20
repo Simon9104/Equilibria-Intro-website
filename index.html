@@ -902,84 +902,130 @@
 
     const { animate, inView, stagger, spring } = Motion;
 
-    // ── Hero entrance ──
-    animate('header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 30 }) });
-    animate('.hero-badge', { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, delay: 0.15, easing: spring({ stiffness: 320, damping: 28 }) });
-    animate('.hero-title', { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, delay: 0.28, easing: spring({ stiffness: 260, damping: 26 }) });
-    animate('.hero-sub', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: 0.48, easing: spring({ stiffness: 280, damping: 28 }) });
-    animate('.hero-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, delay: 0.64, easing: spring({ stiffness: 300, damping: 30 }) });
-    animate('.hero-trust', { opacity: [0, 1] }, { duration: 0.5, delay: 0.82 });
-    animate('.hero-card', { opacity: [0, 1], x: [48, 0] }, { duration: 0.6, delay: stagger(0.12, { start: 0.35 }), easing: spring({ stiffness: 280, damping: 26 }) });
+    // ── Hero entrance — staggered spring sequence ──
+    animate('header', { opacity: [0, 1], y: [-24, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 28 }) });
+    animate('.hero-badge', { opacity: [0, 1], scale: [0.85, 1], y: [12, 0] }, { duration: 0.55, delay: 0.18, easing: spring({ stiffness: 340, damping: 26 }) });
+    animate('.hero-title', { opacity: [0, 1], y: [52, 0], filter: ['blur(6px)', 'blur(0px)'] }, { duration: 0.8, delay: 0.32, easing: spring({ stiffness: 240, damping: 24 }) });
+    animate('.hero-sub', { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, delay: 0.54, easing: spring({ stiffness: 270, damping: 26 }) });
+    animate('.hero-actions', { opacity: [0, 1], y: [22, 0] }, { duration: 0.6, delay: 0.7, easing: spring({ stiffness: 290, damping: 28 }) });
+    animate('.hero-trust', { opacity: [0, 1], y: [10, 0] }, { duration: 0.5, delay: 0.88 });
+    animate('.hero-card', { opacity: [0, 1], x: [60, 0], scale: [0.94, 1] }, {
+      duration: 0.65,
+      delay: stagger(0.13, { start: 0.4 }),
+      easing: spring({ stiffness: 260, damping: 24 })
+    });
 
-    // ── Scroll reveals ──
-    inView('.trust-item', (el) => {
-      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+    // ── Trust bar — slide up stagger ──
+    inView('.trust-bar', () => {
+      animate('.trust-item', { opacity: [0, 1], y: [24, 0] }, {
+        duration: 0.5,
+        delay: stagger(0.1),
+        easing: spring({ stiffness: 320, damping: 28 })
+      });
+    }, { margin: '-40px' });
+
+    // ── Service cards — pop up with stagger ──
+    inView('#sluzby', () => {
+      animate('.section-eyebrow', { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('#sluzby .section-title', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: 0.1, easing: spring({ stiffness: 280, damping: 26 }) });
+      animate('#sluzby .section-sub', { opacity: [0, 1], y: [16, 0] }, { duration: 0.55, delay: 0.2, easing: spring({ stiffness: 290, damping: 28 }) });
+      animate('.service-card', { opacity: [0, 1], y: [40, 0], scale: [0.95, 1] }, {
+        duration: 0.6,
+        delay: stagger(0.08, { start: 0.3 }),
+        easing: spring({ stiffness: 280, damping: 24 })
+      });
+    }, { margin: '-80px' });
+
+    // ── Stats — scale in with bounce ──
+    inView('.stats-section', () => {
+      animate('.stat-number', { opacity: [0, 1], scale: [0.6, 1.08, 1], y: [20, -4, 0] }, {
+        duration: 0.75,
+        delay: stagger(0.12),
+        easing: spring({ stiffness: 300, damping: 18 })
+      });
+      animate('.stat-label', { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.12, { start: 0.3 }) });
     }, { margin: '-60px' });
 
-    inView('.service-card', (el) => {
-      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
+    // ── About section ──
+    inView('#o-nas', () => {
+      animate('.about-img', { opacity: [0, 1], x: [-56, 0], scale: [0.96, 1] }, { duration: 0.8, easing: spring({ stiffness: 240, damping: 26 }) });
+      animate('.about-badge', { opacity: [0, 1], y: [20, 0], scale: [0.9, 1] }, { duration: 0.6, delay: 0.4, easing: spring({ stiffness: 320, damping: 24 }) });
+      animate('#o-nas .section-eyebrow', { opacity: [0, 1], x: [20, 0] }, { duration: 0.45, delay: 0.15, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('#o-nas .section-title', { opacity: [0, 1], y: [28, 0], filter: ['blur(4px)', 'blur(0px)'] }, { duration: 0.65, delay: 0.25, easing: spring({ stiffness: 260, damping: 26 }) });
+      animate('#o-nas p', { opacity: [0, 1], y: [16, 0] }, { duration: 0.55, delay: stagger(0.1, { start: 0.38 }), easing: spring({ stiffness: 280, damping: 28 }) });
+      animate('.about-list li', { opacity: [0, 1], x: [-20, 0] }, { duration: 0.45, delay: stagger(0.07, { start: 0.55 }), easing: spring({ stiffness: 320, damping: 28 }) });
+    }, { margin: '-80px' });
+
+    // ── Contact section ──
+    inView('#kontakt', () => {
+      animate('#kontakt .section-title', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
+      animate('.contact-item', { opacity: [0, 1], x: [-32, 0] }, { duration: 0.5, delay: stagger(0.1, { start: 0.2 }), easing: spring({ stiffness: 300, damping: 26 }) });
+      animate('.review-card', { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, delay: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('.form-card', { opacity: [0, 1], y: [40, 0], scale: [0.97, 1] }, { duration: 0.7, delay: 0.15, easing: spring({ stiffness: 260, damping: 24 }) });
+    }, { margin: '-80px' });
+
+    // ── Footer ──
+    inView('footer', () => {
+      animate('.footer-top > div', { opacity: [0, 1], y: [24, 0] }, { duration: 0.55, delay: stagger(0.1), easing: spring({ stiffness: 300, damping: 28 }) });
     }, { margin: '-40px' });
 
-    inView('.stat-number', (el) => {
-      animate(el, { opacity: [0, 1], scale: [0.7, 1] }, { duration: 0.65, easing: spring({ stiffness: 300, damping: 22 }) });
-    }, { margin: '-40px' });
-
-    inView('.about-img', (el) => {
-      animate(el, { opacity: [0, 1], x: [-48, 0] }, { duration: 0.75, easing: spring({ stiffness: 260, damping: 28 }) });
-    }, { margin: '-60px' });
-
-    inView('.contact-item', (el) => {
-      animate(el, { opacity: [0, 1], x: [-24, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
-    }, { margin: '-40px' });
-
-    inView('.form-card', (el) => {
-      animate(el, { opacity: [0, 1], y: [32, 0] }, { duration: 0.65, easing: spring({ stiffness: 280, damping: 26 }) });
-    }, { margin: '-40px' });
-
-    inView('.section-title', (el) => {
-      animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: spring({ stiffness: 300, damping: 28 }) });
-    }, { margin: '-40px' });
-
-    inView('.review-card', (el) => {
-      animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
-    }, { margin: '-40px' });
-
-    // ── Hover on service cards ──
+    // ── Hover: service cards ──
     document.querySelectorAll('.service-card').forEach(card => {
       card.addEventListener('mouseenter', () =>
-        animate(card, { scale: 1.03 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+        animate(card, { scale: 1.04, y: -6 }, { duration: 0.3, easing: spring({ stiffness: 380, damping: 26 }) })
       );
       card.addEventListener('mouseleave', () =>
-        animate(card, { scale: 1 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+        animate(card, { scale: 1, y: 0 }, { duration: 0.3, easing: spring({ stiffness: 380, damping: 30 }) })
       );
     });
 
-    // ── Hover on buttons ──
-    document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
+    // ── Hover: buttons ──
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+      btn.addEventListener('mouseenter', () =>
+        animate(btn, { scale: 1.05, y: -2 }, { duration: 0.22, easing: spring({ stiffness: 480, damping: 28 }) })
+      );
+      btn.addEventListener('mouseleave', () =>
+        animate(btn, { scale: 1, y: 0 }, { duration: 0.22, easing: spring({ stiffness: 480, damping: 32 }) })
+      );
+    });
+    document.querySelectorAll('.btn-secondary, .nav-cta').forEach(btn => {
       btn.addEventListener('mouseenter', () =>
         animate(btn, { scale: 1.04 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 30 }) })
       );
       btn.addEventListener('mouseleave', () =>
-        animate(btn, { scale: 1 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 32 }) })
+        animate(btn, { scale: 1 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 34 }) })
       );
     });
 
-    // ── Hover on hero cards ──
+    // ── Hover: hero cards — slide right with lift ──
     document.querySelectorAll('.hero-card').forEach(card => {
       card.addEventListener('mouseenter', () =>
-        animate(card, { scale: 1.02, x: 6 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 28 }) })
+        animate(card, { scale: 1.03, x: 8, y: -3 }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 26 }) })
       );
       card.addEventListener('mouseleave', () =>
-        animate(card, { scale: 1, x: 0 }, { duration: 0.25, easing: spring({ stiffness: 400, damping: 32 }) })
+        animate(card, { scale: 1, x: 0, y: 0 }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 30 }) })
       );
     });
 
-    // ── Stat counter animation ──
-    inView('.stats-grid', () => {
-      document.querySelectorAll('.stat-number').forEach(el => {
-        animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: spring({ stiffness: 280, damping: 24 }) });
-      });
-    }, { margin: '-60px' });
+    // ── Hover: contact items ──
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('mouseenter', () =>
+        animate(item, { x: 6, scale: 1.01 }, { duration: 0.22, easing: spring({ stiffness: 400, damping: 28 }) })
+      );
+      item.addEventListener('mouseleave', () =>
+        animate(item, { x: 0, scale: 1 }, { duration: 0.22, easing: spring({ stiffness: 400, damping: 32 }) })
+      );
+    });
+
+    // ── Nav links underline slide ──
+    document.querySelectorAll('nav a:not(.nav-cta)').forEach(link => {
+      link.addEventListener('mouseenter', () =>
+        animate(link, { y: -2 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 30 }) })
+      );
+      link.addEventListener('mouseleave', () =>
+        animate(link, { y: 0 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 34 }) })
+      );
+    });
 
     function handleSubmit(e) {
       e.preventDefault();
