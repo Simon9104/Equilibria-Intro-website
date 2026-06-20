@@ -4,323 +4,338 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Equilibria · Tlačiarenské služby Košice</title>
-  <meta name="description" content="Equilibria – profesionálne tlačiarenské služby v Košiciach. Vizitky, letáky, bannery, veľkoformátová tlač a ďalšie. Textilná 4, Košice." />
+  <meta name="description" content="Equilibria – profesionálne tlačiarenské služby v Košiciach. Vizitky, letáky, bannery, veľkoformátová tlač. Textilná 4, Košice." />
   <link rel="icon" type="image/png" href="assets/equilibria-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: #AF1D1E;
-      --red-deep: #8E1517;
-      --red-light: #fdf2f2;
-      --white: #ffffff;
-      --off-white: #f8f8f8;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-400: #9ca3af;
-      --gray-600: #4b5563;
-      --gray-800: #1f2937;
-      --ink: #111827;
-      --display: 'Playfair Display', Georgia, serif;
-      --body: 'Inter', system-ui, sans-serif;
-      --radius: 12px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
-      --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
-      --shadow-lg: 0 10px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+      --cream:      #F4EFE6;
+      --cream-dark: #EDE6D8;
+      --ink:        #221E1C;
+      --ink-soft:   #52483F;
+      --ink-muted:  rgba(34,30,28,0.45);
+      --line:       rgba(34,30,28,0.14);
+      --crimson:    #AF1D1E;
+      --crimson-deep: #8E1517;
+      --crimson-pale: rgba(175,29,30,0.08);
+      --white:      #ffffff;
+      --display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+      --body:    'EB Garamond', Georgia, serif;
+      --mono:    'IBM Plex Mono', monospace;
+      --radius: 4px;
     }
 
     html { scroll-behavior: smooth; }
     body {
       font-family: var(--body);
-      background: var(--white);
+      background: var(--cream);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
-    .trust-item, .service-card, .stat-number, .about-img,
-    .contact-item, .form-card, .section-title, .review-card { opacity: 0; }
+    /* Initially hidden for Motion animations */
+    .hero-badge, .hero-title, .hero-sub, .hero-actions, .hero-trust,
+    .hero-card, .trust-item, .service-card, .stat-number, .stat-label,
+    .about-img, .contact-item, .form-card, .review-card,
+    .section-eyebrow, .section-title, .section-sub, .about-list li,
+    .footer-top > div { opacity: 0; }
 
+    /* ── Header ── */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
+      background: rgba(244,239,230,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 64px;
-      height: 72px;
+      padding: 0 72px;
+      height: 76px;
     }
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: var(--ink);
     }
-    .logo img { width: 36px; height: 36px; object-fit: contain; }
+    .logo img { width: 38px; height: 38px; object-fit: contain; }
     .logo-name {
       font-family: var(--display);
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
     nav {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 40px;
     }
     nav a {
-      font-size: 14px;
+      font-family: var(--mono);
+      font-size: 12px;
       font-weight: 500;
-      color: var(--gray-600);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
       text-decoration: none;
-      transition: color 0.15s;
+      transition: color 0.2s;
     }
     nav a:hover { color: var(--ink); }
     .nav-cta {
-      background: var(--red);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: 600 !important;
+      background: var(--crimson);
+      color: var(--cream) !important;
+      padding: 10px 24px;
+      letter-spacing: 0.12em;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--red-deep) !important; color: var(--white) !important; }
+    .nav-cta:hover { background: var(--crimson-deep) !important; }
 
+    /* ── Hero ── */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
       align-items: center;
-      padding: 96px 64px;
-      background: var(--white);
-      min-height: calc(100vh - 72px);
+      padding: 112px 72px;
+      min-height: calc(100vh - 76px);
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--red-light);
-      color: var(--red);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-      letter-spacing: 0.04em;
-    }
-    .hero-badge svg { width: 14px; height: 14px; }
-    .hero-title {
-      font-family: var(--display);
-      font-size: clamp(42px, 5.5vw, 72px);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson);
       margin-bottom: 20px;
     }
-    .hero-title span { color: var(--red); }
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(52px, 6.5vw, 88px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--crimson);
+    }
     .hero-sub {
-      font-size: 18px;
-      line-height: 1.65;
-      color: var(--gray-600);
-      margin-bottom: 40px;
-      max-width: 480px;
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      margin-bottom: 44px;
+      max-width: 460px;
     }
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
     }
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: var(--red);
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
+      gap: 12px;
+      background: var(--crimson);
+      color: var(--cream);
+      padding: 16px 36px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       text-decoration: none;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .btn-primary:hover {
-      background: var(--red-deep);
+      background: var(--crimson-deep);
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(175,29,30,0.28);
+      box-shadow: 0 8px 28px rgba(175,29,30,0.25);
     }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--white);
       color: var(--ink);
-      padding: 15px 28px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       text-decoration: none;
-      border: 1.5px solid var(--gray-200);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 4px;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .btn-secondary:hover {
-      border-color: var(--gray-400);
-      box-shadow: var(--shadow-sm);
-    }
+    .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
     .hero-trust {
       display: flex;
       align-items: center;
-      gap: 6px;
-      margin-top: 32px;
-      font-size: 14px;
-      color: var(--gray-600);
+      gap: 8px;
+      margin-top: 36px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
     }
-    .stars { color: #f59e0b; font-size: 16px; letter-spacing: 1px; }
-    .hero-trust strong { color: var(--ink); }
+    .stars { color: var(--crimson); font-size: 14px; letter-spacing: 2px; }
     .hero-visual {
-      position: relative;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
     .hero-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
+      background: var(--cream-dark);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
+      transition: border-color 0.2s;
     }
     .hero-card-icon {
       width: 48px;
       height: 48px;
-      border-radius: 10px;
-      background: var(--red-light);
+      border: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      color: var(--crimson);
     }
-    .hero-card-icon svg { width: 24px; height: 24px; color: var(--red); }
-    .hero-card-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-    .hero-card-sub { font-size: 13px; color: var(--gray-600); }
+    .hero-card-icon svg { width: 22px; height: 22px; }
+    .hero-card-title {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .hero-card-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+    }
     .hero-card.featured {
-      border-color: var(--red);
-      background: var(--red);
-      color: var(--white);
+      background: var(--crimson);
+      border-color: var(--crimson);
     }
-    .hero-card.featured .hero-card-icon { background: rgba(255,255,255,0.18); }
-    .hero-card.featured .hero-card-icon svg { color: var(--white); }
-    .hero-card.featured .hero-card-title { color: var(--white); }
-    .hero-card.featured .hero-card-sub { color: rgba(255,255,255,0.8); }
+    .hero-card.featured .hero-card-icon { border-color: rgba(244,239,230,0.3); color: var(--cream); }
+    .hero-card.featured .hero-card-title { color: var(--cream); }
+    .hero-card.featured .hero-card-sub { color: rgba(244,239,230,0.7); }
 
+    /* ── Trust bar ── */
     .trust-bar {
-      background: var(--gray-100);
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 28px 64px;
+      background: var(--ink);
+      padding: 32px 72px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 64px;
+      gap: 72px;
       flex-wrap: wrap;
     }
     .trust-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      color: var(--gray-600);
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .trust-item svg { width: 20px; height: 20px; color: var(--red); flex-shrink: 0; }
-    .trust-item strong { color: var(--ink); }
-
-    .section { padding: 96px 64px; }
-    .section-sm { padding: 72px 64px; }
-    .section-eyebrow {
-      font-size: 13px;
-      font-weight: 600;
+      color: rgba(244,239,230,0.7);
+      font-family: var(--mono);
+      font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 12px;
+    }
+    .trust-item svg { width: 18px; height: 18px; color: var(--crimson); flex-shrink: 0; }
+    .trust-item strong { color: var(--cream); }
+
+    /* ── Sections ── */
+    .section { padding: 112px 72px; }
+    .section-sm { padding: 80px 72px; }
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 14px;
     }
     .section-title {
       font-family: var(--display);
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      line-height: 1.1;
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 300;
+      line-height: 1.08;
       letter-spacing: -0.01em;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
+    .section-title em { font-style: italic; color: var(--crimson); }
     .section-sub {
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--gray-600);
-      max-width: 560px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 540px;
     }
-    .section-header { margin-bottom: 56px; }
+    .section-header { margin-bottom: 64px; }
     .section-header.centered { text-align: center; }
     .section-header.centered .section-sub { margin: 0 auto; }
+    .divider { width: 48px; height: 1px; background: var(--crimson); margin: 24px 0; }
+    .divider.center { margin: 24px auto; }
 
-    #sluzby { background: var(--off-white); }
+    /* ── Services ── */
+    #sluzby { background: var(--cream-dark); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
     }
     .service-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      background: var(--cream-dark);
+      padding: 40px 36px;
+      transition: background 0.2s;
     }
-    .service-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-      border-color: transparent;
-    }
+    .service-card:hover { background: var(--cream); }
     .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--red-light);
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      color: var(--crimson);
     }
-    .service-icon svg { width: 26px; height: 26px; color: var(--red); }
+    .service-icon svg { width: 20px; height: 20px; }
     .service-name {
-      font-size: 17px;
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 500;
       color: var(--ink);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .service-desc {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.65;
-      color: var(--gray-600);
+      color: var(--ink-soft);
     }
 
+    /* ── Stats ── */
     .stats-section {
-      background: var(--ink);
-      color: var(--white);
-      padding: 80px 64px;
+      background: var(--crimson);
+      padding: 96px 72px;
     }
     .stats-grid {
       display: grid;
@@ -330,271 +345,299 @@
     }
     .stat-number {
       font-family: var(--display);
-      font-size: clamp(42px, 5vw, 64px);
-      font-weight: 800;
-      color: var(--white);
+      font-size: clamp(52px, 6vw, 80px);
+      font-weight: 300;
+      color: var(--cream);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
     }
-    .stat-number span { color: var(--red); }
     .stat-label {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.6);
     }
 
+    /* ── About ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 96px;
+      gap: 112px;
       align-items: center;
     }
     .about-img {
       position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
       aspect-ratio: 4/3;
-      background: var(--gray-100);
+      background: var(--cream-dark);
+      border: 1px solid var(--line);
+      overflow: hidden;
     }
     .about-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: sepia(20%) contrast(1.05);
     }
     .about-badge {
       position: absolute;
-      bottom: 24px;
-      left: 24px;
-      background: var(--white);
-      border-radius: 10px;
-      padding: 16px 20px;
-      box-shadow: var(--shadow-lg);
+      bottom: 20px;
+      left: 20px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .about-badge-icon { font-size: 28px; }
-    .about-badge-text { font-size: 13px; font-weight: 600; color: var(--ink); }
-    .about-badge-sub { font-size: 12px; color: var(--gray-600); font-weight: 400; }
-    .about-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .about-badge-text { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink); letter-spacing: 0.06em; }
+    .about-badge-sub { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); letter-spacing: 0.06em; }
+    .about-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
     .about-list li {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      font-size: 15px;
-      color: var(--gray-600);
-      line-height: 1.5;
+      gap: 14px;
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
     }
     .about-list li::before {
-      content: '';
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--red-light);
+      content: '—';
+      color: var(--crimson);
+      font-family: var(--mono);
       flex-shrink: 0;
       margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23AF1D1E'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E");
-      background-size: 12px;
-      background-repeat: no-repeat;
-      background-position: center;
     }
 
-    #kontakt { background: var(--off-white); }
+    /* ── Contact ── */
+    #kontakt { background: var(--cream-dark); border-top: 1px solid var(--line); }
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 80px;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 96px;
       align-items: start;
     }
-    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-info { display: flex; flex-direction: column; gap: 0; }
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
-      padding: 20px;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
     }
+    .contact-item:first-child { border-top: 1px solid var(--line); }
     .contact-item-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--red-light);
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      color: var(--crimson);
     }
-    .contact-item-icon svg { width: 20px; height: 20px; color: var(--red); }
-    .contact-item-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 4px; }
-    .contact-item-value { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
-    .contact-item-value:hover { color: var(--red); }
-    .contact-item-sub { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+    .contact-item-icon svg { width: 16px; height: 16px; }
+    .contact-item-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+    .contact-item-value {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .contact-item-value:hover { color: var(--crimson); }
+    .contact-item-sub { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 2px; letter-spacing: 0.06em; }
     .review-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 20px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      margin-top: 32px;
     }
-    .review-stars { color: #f59e0b; font-size: 18px; margin-bottom: 8px; }
-    .review-text { font-size: 14px; color: var(--gray-600); line-height: 1.6; font-style: italic; margin-bottom: 10px; }
-    .review-author { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .review-stars { color: var(--crimson); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+    .review-text { font-family: var(--body); font-size: 16px; color: var(--ink-soft); line-height: 1.6; font-style: italic; margin-bottom: 12px; }
+    .review-author { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-muted); text-transform: uppercase; }
+
+    /* ── Form ── */
     .form-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: var(--shadow);
+      background: var(--cream);
+      border: 1px solid var(--line);
+      padding: 48px;
     }
-    .form-title { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .form-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; }
-    .form-group { margin-bottom: 18px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+    .form-title {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
     label {
       display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-800);
-      margin-bottom: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
     }
     input, select, textarea {
       width: 100%;
       font-family: var(--body);
-      font-size: 15px;
+      font-size: 17px;
       color: var(--ink);
-      background: var(--white);
-      border: 1.5px solid var(--gray-200);
-      border-radius: 8px;
-      padding: 12px 14px;
+      background: var(--cream-dark);
+      border: 1px solid var(--line);
+      padding: 13px 16px;
       outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s;
       appearance: none;
+      border-radius: 0;
     }
     input:focus, select:focus, textarea:focus {
-      border-color: var(--red);
-      box-shadow: 0 0 0 3px rgba(175,29,30,0.12);
+      border-color: var(--crimson);
     }
     textarea { resize: vertical; min-height: 110px; }
     select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2352483F'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 18px;
-      padding-right: 38px;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 40px;
     }
     .form-submit {
       width: 100%;
-      background: var(--red);
-      color: var(--white);
-      font-family: var(--body);
-      font-size: 16px;
-      font-weight: 700;
+      background: var(--crimson);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       border: none;
-      border-radius: 10px;
-      padding: 16px;
+      padding: 18px;
       cursor: pointer;
       transition: background 0.2s, transform 0.15s;
       margin-top: 8px;
+      border-radius: 0;
     }
-    .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); }
-    .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
+    .form-submit:hover { background: var(--crimson-deep); transform: translateY(-1px); }
+    .form-note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-muted); text-align: center; margin-top: 14px; text-transform: uppercase; }
 
-    .map-section { padding: 0; }
-    .map-section iframe {
-      width: 100%;
-      height: 380px;
-      border: none;
-      display: block;
-    }
+    /* ── Map ── */
+    .map-section iframe { width: 100%; height: 380px; border: none; display: block; filter: sepia(20%) contrast(1.05); }
 
+    /* ── Footer ── */
     footer {
       background: var(--ink);
-      color: var(--white);
-      padding: 56px 64px 40px;
+      color: var(--cream);
+      padding: 72px 72px 48px;
     }
     .footer-top {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(244,239,230,0.1);
     }
     .footer-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 16px;
       text-decoration: none;
     }
     .footer-logo img { width: 32px; height: 32px; }
     .footer-logo-name {
       font-family: var(--display);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.08em;
-    }
-    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
-    .footer-col-title {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 18px;
+    }
+    .footer-tagline { font-family: var(--body); font-size: 15px; color: rgba(244,239,230,0.45); line-height: 1.6; font-style: italic; }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.35);
+      margin-bottom: 20px;
     }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a {
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
+      font-family: var(--body);
+      font-size: 15px;
+      color: rgba(244,239,230,0.6);
       text-decoration: none;
       transition: color 0.15s;
     }
-    .footer-links a:hover { color: var(--white); }
+    .footer-links a:hover { color: var(--cream); }
     .footer-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 32px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
+      padding-top: 36px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(244,239,230,0.25);
     }
 
+    /* ── Responsive ── */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
     }
     @media (max-width: 900px) {
       header { padding: 0 28px; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; gap: 48px; padding: 64px 28px; min-height: auto; }
+      .hero { grid-template-columns: 1fr; gap: 56px; padding: 72px 28px; min-height: auto; }
       .hero-visual { order: -1; }
-      .trust-bar { padding: 24px 28px; gap: 24px; }
-      .section { padding: 72px 28px; }
-      .section-sm { padding: 56px 28px; }
-      .stats-section { padding: 56px 28px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-      footer { padding: 48px 28px 32px; }
+      .trust-bar { padding: 28px 28px; gap: 28px; }
+      .section { padding: 80px 28px; }
+      .section-sm { padding: 64px 28px; }
+      .stats-section { padding: 72px 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+      footer { padding: 56px 28px 36px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
     @media (max-width: 600px) {
       .services-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
       .form-row { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
-      .trust-bar { flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px 28px; }
+      .trust-bar { flex-direction: column; gap: 20px; align-items: flex-start; }
       .footer-top { grid-template-columns: 1fr; }
-      .form-card { padding: 28px 20px; }
+      .form-card { padding: 32px 24px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ── Header ── -->
   <header>
     <a href="/" class="logo">
       <img src="assets/equilibria-mark.png" alt="Equilibria" />
@@ -608,160 +651,171 @@
     </nav>
   </header>
 
+  <!-- ── Hero ── -->
   <section class="hero">
     <div>
-      <div class="reveal">
-        <div class="hero-badge">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          5,0 · Hodnotenie zákazníkov
-        </div>
+      <div class="hero-badge">
+        <div class="hero-eyebrow">Tlačiarenské služby · Košice</div>
       </div>
-      <div class="reveal delay-1">
-        <h1 class="hero-title">
-          Profesionálna<br>
-          <span>tlač</span> pre váš<br>
-          biznis
-        </h1>
+      <h1 class="hero-title">
+        Profesionálna<br>
+        <em>tlač</em> pre váš<br>
+        biznis
+      </h1>
+      <p class="hero-sub">
+        Vizitky, letáky, bannery, veľkoformátová tlač a ďalšie. Kvalitná tlač s rýchlym vybavením priamo v Košiciach.
+      </p>
+      <div class="hero-actions">
+        <a href="#cenova-ponuka" class="btn-primary">
+          Získať cenovú ponuku
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="tel:+421909186702" class="btn-secondary">
+          0909 186 702 →
+        </a>
       </div>
-      <div class="reveal delay-2">
-        <p class="hero-sub">
-          Vizitky, letáky, bannery, veľkoformátová tlač a ďalšie. Kvalitná tlač s rýchlym vybavením priamo v Košiciach.
-        </p>
-      </div>
-      <div class="reveal delay-3">
-        <div class="hero-actions">
-          <a href="#cenova-ponuka" class="btn-primary">
-            Získať cenovú ponuku
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
-          </a>
-          <a href="tel:+421909186702" class="btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd"/></svg>
-            0909 186 702
-          </a>
-        </div>
-        <div class="hero-trust">
-          <span class="stars">★★★★★</span>
-          <strong>5,0</strong>
-          &nbsp;·&nbsp; hodnotení: 3 &nbsp;·&nbsp; Google Mapy
-        </div>
+      <div class="hero-trust">
+        <span class="stars">★★★★★</span>
+        &nbsp;5,0 · hodnotení: 3 · Google Mapy
       </div>
     </div>
-    <div class="hero-visual reveal delay-2">
+    <div class="hero-visual">
       <div class="hero-card featured">
         <div class="hero-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
         <div>
           <div class="hero-card-title">Veľkoformátová tlač</div>
-          <div class="hero-card-sub">Bannery, plagáty, PVC plachty</div>
+          <div class="hero-card-sub">Bannery · plagáty · PVC plachty</div>
         </div>
       </div>
       <div class="hero-card">
         <div class="hero-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </div>
         <div>
           <div class="hero-card-title">Firemná identita</div>
-          <div class="hero-card-sub">Vizitky, hlavičkové papiere, obálky</div>
+          <div class="hero-card-sub">Vizitky · hlavičkové papiere</div>
         </div>
       </div>
       <div class="hero-card">
         <div class="hero-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
         <div>
           <div class="hero-card-title">Letáky & katalógy</div>
-          <div class="hero-card-sub">Ofsetová a digitálna tlač</div>
+          <div class="hero-card-sub">Ofsetová · digitálna tlač</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── Trust bar ── -->
   <div class="trust-bar">
-    <div class="trust-item reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <span><strong>Rýchle vybavenie</strong> — expresné termíny</span>
     </div>
-    <div class="trust-item reveal delay-1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       <span><strong>Otvorené</strong> Po–Pia od 8:00</span>
     </div>
-    <div class="trust-item reveal delay-2">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      <span><strong>Individuálny prístup</strong> ku každej zákazke</span>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <span><strong>Individuálny prístup</strong> — každá zákazka</span>
     </div>
-    <div class="trust-item reveal delay-3">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <span><strong>Overená kvalita</strong> — 5,0 na Google</span>
     </div>
   </div>
 
+  <!-- ── Services ── -->
   <section class="section" id="sluzby">
     <div class="section-header centered">
-      <div class="section-eyebrow reveal">Naše služby</div>
-      <h2 class="section-title reveal delay-1">Čo tlačíme</h2>
-      <p class="section-sub reveal delay-2">Komplexné tlačiarenské riešenia pre firmy aj jednotlivcov. Od malých zákaziek až po veľkovýrobu.</p>
+      <div class="section-eyebrow">Naše služby</div>
+      <h2 class="section-title">Čo <em>tlačíme</em></h2>
+      <div class="divider center"></div>
+      <p class="section-sub">Komplexné tlačiarenské riešenia pre firmy aj jednotlivcov. Od malých zákaziek až po veľkovýrobu.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
         <div class="service-name">Vizitky</div>
         <div class="service-desc">Štandardné, skladané, embosované alebo s UV lakom. Prvý dojem, ktorý zostane.</div>
       </div>
-      <div class="service-card reveal delay-1">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Letáky & plagáty</div>
         <div class="service-desc">Digitálna aj ofsetová tlač. Formáty A6 až A0 s možnosťou laminovania.</div>
       </div>
-      <div class="service-card reveal delay-2">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg></div>
         <div class="service-name">Bannery & plachty</div>
-        <div class="service-desc">Veľkoformátová tlač na PVC plachtu, textil alebo mesh. Vhodné na exteriér aj interiér.</div>
+        <div class="service-desc">Veľkoformátová tlač na PVC plachtu, textil alebo mesh. Exteriér aj interiér.</div>
       </div>
-      <div class="service-card reveal delay-1">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
         <div class="service-name">Brožúry & katalógy</div>
         <div class="service-desc">Väzba V1, V2 alebo V3. Plnofarebná tlač s lesklým alebo matným lakom.</div>
       </div>
-      <div class="service-card reveal delay-2">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
         <div class="service-name">Obaly & packaging</div>
-        <div class="service-desc">Produktové obaly, etikety a nálepky. Potlač fólií a kartónov podľa vašich požiadaviek.</div>
+        <div class="service-desc">Produktové obaly, etikety a nálepky. Potlač fólií a kartónov na mieru.</div>
       </div>
-      <div class="service-card reveal delay-3">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="service-name">Individuálne zákazky</div>
-        <div class="service-desc">Nemáte tu svoju položku? Kontaktujte nás — poradíme a pripravíme riešenie na mieru.</div>
+        <div class="service-desc">Kontaktujte nás — poradíme a pripravíme riešenie presne podľa vašich potrieb.</div>
       </div>
     </div>
   </section>
 
+  <!-- ── Stats ── -->
   <section class="stats-section">
     <div class="stats-grid">
-      <div class="reveal"><div class="stat-number">5<span>,0</span></div><div class="stat-label">Hodnotenie Google</div></div>
-      <div class="reveal delay-1"><div class="stat-number">100<span>%</span></div><div class="stat-label">Spokojnosť zákazníkov</div></div>
-      <div class="reveal delay-2"><div class="stat-number">24<span>h</span></div><div class="stat-label">Expresné vybavenie</div></div>
-      <div class="reveal delay-3"><div class="stat-number">∞</div><div class="stat-label">Formátov a materiálov</div></div>
+      <div>
+        <div class="stat-number">5<span style="font-size:0.65em">,0</span></div>
+        <div class="stat-label">Hodnotenie Google</div>
+      </div>
+      <div>
+        <div class="stat-number">100<span style="font-size:0.65em">%</span></div>
+        <div class="stat-label">Spokojnosť zákazníkov</div>
+      </div>
+      <div>
+        <div class="stat-number">24<span style="font-size:0.65em">h</span></div>
+        <div class="stat-label">Expresné vybavenie</div>
+      </div>
+      <div>
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Formátov a materiálov</div>
+      </div>
     </div>
   </section>
 
+  <!-- ── About ── -->
   <section class="section" id="o-nas">
     <div class="about-grid">
-      <div class="about-img reveal">
+      <div class="about-img">
         <img src="assets/books-photo.jpg" alt="Equilibria tlačiareň" />
         <div class="about-badge">
-          <div class="about-badge-icon">🏆</div>
           <div>
-            <div class="about-badge-text">5,0 · Google Mapy</div>
+            <div class="about-badge-text">★★★★★ · 5,0 · Google Mapy</div>
             <div class="about-badge-sub">Overené hodnotenia zákazníkov</div>
           </div>
         </div>
       </div>
-      <div class="reveal delay-2">
+      <div>
         <div class="section-eyebrow">O nás</div>
-        <h2 class="section-title">Tlačíme s<br>dôrazom na detail</h2>
-        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;">Sme Equilibria — tlačiarenská firma so sídlom v Košiciach. Každej zákazke venujeme plnú pozornosť, od výberu materiálu až po finálnu úpravu.</p>
-        <p style="font-size:16px;line-height:1.7;color:var(--gray-600);">Nájdete nás na adrese Textilná 4 v Košiciach. Radi vám poradíme osobne, telefonicky alebo e-mailom.</p>
+        <h2 class="section-title">Tlačíme s<br><em>dôrazom na detail</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:17px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px;">
+          Sme Equilibria — tlačiarenská firma so sídlom v Košiciach. Každej zákazke venujeme plnú pozornosť, od výberu materiálu až po finálnu úpravu.
+        </p>
+        <p style="font-size:17px;line-height:1.75;color:var(--ink-soft);">
+          Nájdete nás na adrese Textilná 4 v Košiciach. Radi vám poradíme osobne, telefonicky alebo e-mailom.
+        </p>
         <ul class="about-list">
           <li>Digitálna aj ofsetová tlač vo vysokej kvalite</li>
           <li>Veľkoformátová tlač — bannery, plachty, plagáty</li>
@@ -773,53 +827,56 @@
     </div>
   </section>
 
+  <!-- ── Contact + Form ── -->
   <section class="section-sm" id="kontakt">
     <div class="section-header">
-      <div class="section-eyebrow reveal">Kontakt</div>
-      <h2 class="section-title reveal delay-1">Ozvite sa nám</h2>
+      <div class="section-eyebrow">Kontakt</div>
+      <h2 class="section-title">Ozvite sa <em>nám</em></h2>
+      <div class="divider"></div>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-item reveal">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="contact-item-label">Adresa</div>
             <div class="contact-item-value">Textilná 4, 040 12 Košice</div>
             <div class="contact-item-sub">Nad jazerom, Košice</div>
           </div>
         </div>
-        <div class="contact-item reveal delay-1">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.27-.27a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.27-.27a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div>
             <div class="contact-item-label">Telefón</div>
             <a href="tel:+421909186702" class="contact-item-value">0909 186 702</a>
-            <div class="contact-item-sub">Voláme v pracovných hodinách</div>
+            <div class="contact-item-sub">Pracovné hodiny</div>
           </div>
         </div>
-        <div class="contact-item reveal delay-2">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div>
             <div class="contact-item-label">Otváracie hodiny</div>
             <div class="contact-item-value">Po – Pia: 8:00 – 17:00</div>
             <div class="contact-item-sub">Víkendy a sviatky: zatvorené</div>
           </div>
         </div>
-        <div class="contact-item reveal delay-3">
-          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg></div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg></div>
           <div>
             <div class="contact-item-label">Web</div>
             <a href="https://equilibria.sk" target="_blank" rel="noopener" class="contact-item-value">equilibria.sk</a>
           </div>
         </div>
-        <div class="review-card reveal delay-2">
+        <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <div class="review-text">"Skvelá kvalita tlače, rýchle vybavenie a ochotný prístup. Určite odporúčam!"</div>
-          <div class="review-author">— Zákazník, Google Mapy</div>
+          <div class="review-author">— Zákazník · Google Mapy</div>
         </div>
       </div>
-      <div class="form-card reveal delay-1" id="cenova-ponuka">
-        <div class="form-title">Získajte cenovú ponuku</div>
-        <div class="form-sub">Opíšte svoju zákazku a my vám do 24 hodín pošleme ponuku.</div>
+
+      <div class="form-card" id="cenova-ponuka">
+        <div class="form-title">Cenová ponuka</div>
+        <div class="form-sub">Opíšte zákazku — odpovieme do 24 hodín</div>
         <form onsubmit="handleSubmit(event)">
           <div class="form-row">
             <div><label for="meno">Meno a priezvisko</label><input type="text" id="meno" name="meno" placeholder="Ján Novák" required /></div>
@@ -838,29 +895,31 @@
               <option>Bannery a plachty</option>
               <option>Brozury a katalogy</option>
               <option>Obaly a etikety</option>
-              <option>Iná zákazka</option>
+              <option>Ina zakazka</option>
             </select>
           </div>
           <div class="form-group">
             <label for="sprava">Popis zákazky</label>
-            <textarea id="sprava" name="sprava" placeholder="Formát, množstvo, materiál, termín… čím viac informácií, tým presnejšia ponuka." required></textarea>
+            <textarea id="sprava" name="sprava" placeholder="Formát, množstvo, materiál, termín…" required></textarea>
           </div>
           <button type="submit" class="form-submit">Odoslať dopyt →</button>
-          <div class="form-note">Odpovieme do 24 hodín v pracovných dňoch.</div>
+          <div class="form-note">Odpovieme do 24 hodín v pracovných dňoch</div>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- ── Map ── -->
   <div class="map-section">
     <iframe title="Equilibria na mape" src="https://maps.google.com/maps?q=Textilná+4,+040+12+Košice&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
+  <!-- ── Footer ── -->
   <footer>
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo"><img src="assets/equilibria-mark.png" alt="Equilibria" /><span class="footer-logo-name">Equilibria</span></a>
-        <div class="footer-tagline">Profesionálne tlačiarenské služby<br>v Košiciach.</div>
+        <div class="footer-tagline">Profesionálne tlačiarenské služby v Košiciach.</div>
       </div>
       <div>
         <div class="footer-col-title">Služby</div>
@@ -899,132 +958,87 @@
   <script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
   <script>
     emailjs.init('kXLXwsJknN8aGv-97');
-
     const { animate, inView, stagger, spring } = Motion;
 
-    // ── Hero entrance — staggered spring sequence ──
-    animate('header', { opacity: [0, 1], y: [-24, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 28 }) });
-    animate('.hero-badge', { opacity: [0, 1], scale: [0.85, 1], y: [12, 0] }, { duration: 0.55, delay: 0.18, easing: spring({ stiffness: 340, damping: 26 }) });
-    animate('.hero-title', { opacity: [0, 1], y: [52, 0], filter: ['blur(6px)', 'blur(0px)'] }, { duration: 0.8, delay: 0.32, easing: spring({ stiffness: 240, damping: 24 }) });
-    animate('.hero-sub', { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, delay: 0.54, easing: spring({ stiffness: 270, damping: 26 }) });
-    animate('.hero-actions', { opacity: [0, 1], y: [22, 0] }, { duration: 0.6, delay: 0.7, easing: spring({ stiffness: 290, damping: 28 }) });
-    animate('.hero-trust', { opacity: [0, 1], y: [10, 0] }, { duration: 0.5, delay: 0.88 });
-    animate('.hero-card', { opacity: [0, 1], x: [60, 0], scale: [0.94, 1] }, {
-      duration: 0.65,
-      delay: stagger(0.13, { start: 0.4 }),
-      easing: spring({ stiffness: 260, damping: 24 })
-    });
+    // ── Hero entrance ──
+    animate('header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 28 }) });
+    animate('.hero-eyebrow', { opacity: [0, 1], y: [12, 0] }, { duration: 0.5, delay: 0.2, easing: spring({ stiffness: 320, damping: 28 }) });
+    animate('.hero-title', { opacity: [0, 1], y: [48, 0], filter: ['blur(6px)', 'blur(0px)'] }, { duration: 0.85, delay: 0.34, easing: spring({ stiffness: 240, damping: 24 }) });
+    animate('.hero-sub', { opacity: [0, 1], y: [24, 0] }, { duration: 0.65, delay: 0.56, easing: spring({ stiffness: 270, damping: 26 }) });
+    animate('.hero-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.72, easing: spring({ stiffness: 290, damping: 28 }) });
+    animate('.hero-trust', { opacity: [0, 1] }, { duration: 0.5, delay: 0.9 });
+    animate('.hero-card', { opacity: [0, 1], x: [56, 0] }, { duration: 0.65, delay: stagger(0.13, { start: 0.42 }), easing: spring({ stiffness: 260, damping: 24 }) });
 
-    // ── Trust bar — slide up stagger ──
+    // ── Trust bar ──
     inView('.trust-bar', () => {
-      animate('.trust-item', { opacity: [0, 1], y: [24, 0] }, {
-        duration: 0.5,
-        delay: stagger(0.1),
-        easing: spring({ stiffness: 320, damping: 28 })
-      });
+      animate('.trust-item', { opacity: [0, 1], y: [20, 0] }, { duration: 0.5, delay: stagger(0.09), easing: spring({ stiffness: 320, damping: 28 }) });
     }, { margin: '-40px' });
 
-    // ── Service cards — pop up with stagger ──
+    // ── Services ──
     inView('#sluzby', () => {
-      animate('.section-eyebrow', { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
-      animate('#sluzby .section-title', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: 0.1, easing: spring({ stiffness: 280, damping: 26 }) });
-      animate('#sluzby .section-sub', { opacity: [0, 1], y: [16, 0] }, { duration: 0.55, delay: 0.2, easing: spring({ stiffness: 290, damping: 28 }) });
-      animate('.service-card', { opacity: [0, 1], y: [40, 0], scale: [0.95, 1] }, {
-        duration: 0.6,
-        delay: stagger(0.08, { start: 0.3 }),
-        easing: spring({ stiffness: 280, damping: 24 })
-      });
+      animate('#sluzby .section-eyebrow', { opacity: [0, 1], y: [14, 0] }, { duration: 0.5, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('#sluzby .section-title', { opacity: [0, 1], y: [24, 0], filter: ['blur(4px)', 'blur(0px)'] }, { duration: 0.65, delay: 0.1, easing: spring({ stiffness: 270, damping: 26 }) });
+      animate('#sluzby .section-sub', { opacity: [0, 1], y: [14, 0] }, { duration: 0.55, delay: 0.22, easing: spring({ stiffness: 290, damping: 28 }) });
+      animate('.service-card', { opacity: [0, 1], y: [36, 0] }, { duration: 0.6, delay: stagger(0.07, { start: 0.3 }), easing: spring({ stiffness: 280, damping: 24 }) });
     }, { margin: '-80px' });
 
-    // ── Stats — scale in with bounce ──
+    // ── Stats ──
     inView('.stats-section', () => {
-      animate('.stat-number', { opacity: [0, 1], scale: [0.6, 1.08, 1], y: [20, -4, 0] }, {
-        duration: 0.75,
-        delay: stagger(0.12),
-        easing: spring({ stiffness: 300, damping: 18 })
-      });
-      animate('.stat-label', { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.12, { start: 0.3 }) });
+      animate('.stat-number', { opacity: [0, 1], scale: [0.65, 1.06, 1], y: [16, -3, 0] }, { duration: 0.8, delay: stagger(0.12), easing: spring({ stiffness: 290, damping: 18 }) });
+      animate('.stat-label', { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.12, { start: 0.35 }) });
     }, { margin: '-60px' });
 
-    // ── About section ──
+    // ── About ──
     inView('#o-nas', () => {
-      animate('.about-img', { opacity: [0, 1], x: [-56, 0], scale: [0.96, 1] }, { duration: 0.8, easing: spring({ stiffness: 240, damping: 26 }) });
-      animate('.about-badge', { opacity: [0, 1], y: [20, 0], scale: [0.9, 1] }, { duration: 0.6, delay: 0.4, easing: spring({ stiffness: 320, damping: 24 }) });
-      animate('#o-nas .section-eyebrow', { opacity: [0, 1], x: [20, 0] }, { duration: 0.45, delay: 0.15, easing: spring({ stiffness: 300, damping: 28 }) });
-      animate('#o-nas .section-title', { opacity: [0, 1], y: [28, 0], filter: ['blur(4px)', 'blur(0px)'] }, { duration: 0.65, delay: 0.25, easing: spring({ stiffness: 260, damping: 26 }) });
-      animate('#o-nas p', { opacity: [0, 1], y: [16, 0] }, { duration: 0.55, delay: stagger(0.1, { start: 0.38 }), easing: spring({ stiffness: 280, damping: 28 }) });
-      animate('.about-list li', { opacity: [0, 1], x: [-20, 0] }, { duration: 0.45, delay: stagger(0.07, { start: 0.55 }), easing: spring({ stiffness: 320, damping: 28 }) });
+      animate('.about-img', { opacity: [0, 1], x: [-52, 0] }, { duration: 0.85, easing: spring({ stiffness: 240, damping: 26 }) });
+      animate('.about-badge', { opacity: [0, 1], y: [18, 0] }, { duration: 0.55, delay: 0.45, easing: spring({ stiffness: 320, damping: 26 }) });
+      animate('#o-nas .section-eyebrow', { opacity: [0, 1], x: [16, 0] }, { duration: 0.45, delay: 0.18, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('#o-nas .section-title', { opacity: [0, 1], y: [28, 0], filter: ['blur(4px)', 'blur(0px)'] }, { duration: 0.7, delay: 0.28, easing: spring({ stiffness: 260, damping: 26 }) });
+      animate('#o-nas p', { opacity: [0, 1], y: [14, 0] }, { duration: 0.55, delay: stagger(0.1, { start: 0.42 }), easing: spring({ stiffness: 280, damping: 28 }) });
+      animate('.about-list li', { opacity: [0, 1], x: [-18, 0] }, { duration: 0.45, delay: stagger(0.07, { start: 0.58 }), easing: spring({ stiffness: 320, damping: 28 }) });
     }, { margin: '-80px' });
 
-    // ── Contact section ──
+    // ── Contact ──
     inView('#kontakt', () => {
-      animate('#kontakt .section-title', { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
-      animate('.contact-item', { opacity: [0, 1], x: [-32, 0] }, { duration: 0.5, delay: stagger(0.1, { start: 0.2 }), easing: spring({ stiffness: 300, damping: 26 }) });
-      animate('.review-card', { opacity: [0, 1], y: [20, 0] }, { duration: 0.55, delay: 0.55, easing: spring({ stiffness: 300, damping: 28 }) });
-      animate('.form-card', { opacity: [0, 1], y: [40, 0], scale: [0.97, 1] }, { duration: 0.7, delay: 0.15, easing: spring({ stiffness: 260, damping: 24 }) });
+      animate('#kontakt .section-title', { opacity: [0, 1], y: [22, 0] }, { duration: 0.6, easing: spring({ stiffness: 280, damping: 26 }) });
+      animate('.contact-item', { opacity: [0, 1], x: [-28, 0] }, { duration: 0.5, delay: stagger(0.09, { start: 0.2 }), easing: spring({ stiffness: 300, damping: 26 }) });
+      animate('.review-card', { opacity: [0, 1], y: [18, 0] }, { duration: 0.55, delay: 0.58, easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('.form-card', { opacity: [0, 1], y: [36, 0] }, { duration: 0.7, delay: 0.14, easing: spring({ stiffness: 260, damping: 24 }) });
     }, { margin: '-80px' });
 
     // ── Footer ──
     inView('footer', () => {
-      animate('.footer-top > div', { opacity: [0, 1], y: [24, 0] }, { duration: 0.55, delay: stagger(0.1), easing: spring({ stiffness: 300, damping: 28 }) });
+      animate('.footer-top > div', { opacity: [0, 1], y: [22, 0] }, { duration: 0.55, delay: stagger(0.1), easing: spring({ stiffness: 300, damping: 28 }) });
     }, { margin: '-40px' });
 
     // ── Hover: service cards ──
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('mouseenter', () =>
-        animate(card, { scale: 1.04, y: -6 }, { duration: 0.3, easing: spring({ stiffness: 380, damping: 26 }) })
-      );
-      card.addEventListener('mouseleave', () =>
-        animate(card, { scale: 1, y: 0 }, { duration: 0.3, easing: spring({ stiffness: 380, damping: 30 }) })
-      );
+    document.querySelectorAll('.service-card').forEach(el => {
+      el.addEventListener('mouseenter', () => animate(el, { y: -5, borderColor: 'rgba(175,29,30,0.3)' }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 26 }) }));
+      el.addEventListener('mouseleave', () => animate(el, { y: 0, borderColor: 'rgba(34,30,28,0.14)' }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 30 }) }));
+    });
+
+    // ── Hover: hero cards ──
+    document.querySelectorAll('.hero-card').forEach(el => {
+      el.addEventListener('mouseenter', () => animate(el, { x: 8, scale: 1.02 }, { duration: 0.25, easing: spring({ stiffness: 380, damping: 26 }) }));
+      el.addEventListener('mouseleave', () => animate(el, { x: 0, scale: 1 }, { duration: 0.25, easing: spring({ stiffness: 380, damping: 30 }) }));
     });
 
     // ── Hover: buttons ──
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-      btn.addEventListener('mouseenter', () =>
-        animate(btn, { scale: 1.05, y: -2 }, { duration: 0.22, easing: spring({ stiffness: 480, damping: 28 }) })
-      );
-      btn.addEventListener('mouseleave', () =>
-        animate(btn, { scale: 1, y: 0 }, { duration: 0.22, easing: spring({ stiffness: 480, damping: 32 }) })
-      );
-    });
-    document.querySelectorAll('.btn-secondary, .nav-cta').forEach(btn => {
-      btn.addEventListener('mouseenter', () =>
-        animate(btn, { scale: 1.04 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 30 }) })
-      );
-      btn.addEventListener('mouseleave', () =>
-        animate(btn, { scale: 1 }, { duration: 0.2, easing: spring({ stiffness: 500, damping: 34 }) })
-      );
-    });
-
-    // ── Hover: hero cards — slide right with lift ──
-    document.querySelectorAll('.hero-card').forEach(card => {
-      card.addEventListener('mouseenter', () =>
-        animate(card, { scale: 1.03, x: 8, y: -3 }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 26 }) })
-      );
-      card.addEventListener('mouseleave', () =>
-        animate(card, { scale: 1, x: 0, y: 0 }, { duration: 0.28, easing: spring({ stiffness: 380, damping: 30 }) })
-      );
+    document.querySelectorAll('.btn-primary').forEach(el => {
+      el.addEventListener('mouseenter', () => animate(el, { scale: 1.04, y: -2 }, { duration: 0.2, easing: spring({ stiffness: 480, damping: 28 }) }));
+      el.addEventListener('mouseleave', () => animate(el, { scale: 1, y: 0 }, { duration: 0.2, easing: spring({ stiffness: 480, damping: 32 }) }));
     });
 
     // ── Hover: contact items ──
-    document.querySelectorAll('.contact-item').forEach(item => {
-      item.addEventListener('mouseenter', () =>
-        animate(item, { x: 6, scale: 1.01 }, { duration: 0.22, easing: spring({ stiffness: 400, damping: 28 }) })
-      );
-      item.addEventListener('mouseleave', () =>
-        animate(item, { x: 0, scale: 1 }, { duration: 0.22, easing: spring({ stiffness: 400, damping: 32 }) })
-      );
+    document.querySelectorAll('.contact-item').forEach(el => {
+      el.addEventListener('mouseenter', () => animate(el, { x: 6 }, { duration: 0.2, easing: spring({ stiffness: 400, damping: 28 }) }));
+      el.addEventListener('mouseleave', () => animate(el, { x: 0 }, { duration: 0.2, easing: spring({ stiffness: 400, damping: 32 }) }));
     });
 
-    // ── Nav links underline slide ──
-    document.querySelectorAll('nav a:not(.nav-cta)').forEach(link => {
-      link.addEventListener('mouseenter', () =>
-        animate(link, { y: -2 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 30 }) })
-      );
-      link.addEventListener('mouseleave', () =>
-        animate(link, { y: 0 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 34 }) })
-      );
+    // ── Hover: nav links ──
+    document.querySelectorAll('nav a:not(.nav-cta)').forEach(el => {
+      el.addEventListener('mouseenter', () => animate(el, { y: -2 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 30 }) }));
+      el.addEventListener('mouseleave', () => animate(el, { y: 0 }, { duration: 0.18, easing: spring({ stiffness: 500, damping: 34 }) }));
     });
 
     function handleSubmit(e) {
@@ -1036,22 +1050,15 @@
       emailjs.sendForm('service_43xvxme', 'template_my1gg5n', form)
         .then(() => {
           btn.textContent = '✓ Dopyt odoslaný!';
-          btn.style.background = '#16a34a';
+          btn.style.background = '#2d6a4f';
           form.reset();
-          setTimeout(() => {
-            btn.textContent = 'Odoslať dopyt →';
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
+          setTimeout(() => { btn.textContent = 'Odoslať dopyt →'; btn.style.background = ''; btn.disabled = false; }, 4000);
         })
         .catch(() => {
           btn.textContent = '✗ Chyba, skúste znova';
-          btn.style.background = '#dc2626';
+          btn.style.background = '#8E1517';
           btn.disabled = false;
-          setTimeout(() => {
-            btn.textContent = 'Odoslať dopyt →';
-            btn.style.background = '';
-          }, 3000);
+          setTimeout(() => { btn.textContent = 'Odoslať dopyt →'; btn.style.background = ''; }, 3000);
         });
     }
   </script>
