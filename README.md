@@ -10,7 +10,6 @@ Jednoduchá statická HTML stránka bez závislostí na frameworkoch. Obsahuje v
 
 - **Hero** – hlavný banner s CTA tlačidlami a hodnotením
 - **Trust bar** – rýchle dôveryhodnostné signály
-- **Služby** – 6 kariet tlačiarenských služieb
 - **Štatistiky** – kľúčové čísla firmy
 - **O nás** – predstavenie firmy
 - **Kontakt** – adresa, telefón, otváracie hodiny
@@ -29,7 +28,6 @@ Jednoduchá statická HTML stránka bez závislostí na frameworkoch. Obsahuje v
 
 Stačí otvoriť `index.html` v prehliadači. Žiadna inštalácia nie je potrebná.
 
-## EmailJS konfigurácia
 
 Formulár používa EmailJS. Credentials sú nastavené priamo v `index.html`:
 
